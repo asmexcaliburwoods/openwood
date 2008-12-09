@@ -8,5 +8,5 @@
 
 == Dependencies ==
 
- * chat_multiplexor is dependent on smack and openmim;
+ * chat_multiplexor depends on smack and openmim;
  * no other dependencies.
