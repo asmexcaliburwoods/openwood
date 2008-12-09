@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE mns SYSTEM "mns.dtd">
+<mns>
+
+<!--
+
+for the uins below, the password is: jc
+124035064
+124035285
+129959264
+132023497
+132023857
+132023923
+132023961
+132024003
+132024025
+132169024
+132169280
+132624322
+132624758
+
+for the uins below, the password is: p
+45454734
+45623962
+51690707
+113575243
+114903563
+122500891 //auth required
+122994538 //auth required
+123014271 //auth required
+128708044 //auth required
+128704654 //auth required
+128704900 //auth required
+128705297 //auth required
+128708501 //auth required
+128709139 //auth not required
+130035330 //auth not required
+
+-->
+
+  <define-user nick="a" login-id="124035064" password="jc"/>
+  <define-user ERR="+"  nick="b" login-id="124035285" password="jc"/>
+  <define-user ERR="+"  nick="c" login-id="129959264" password="jc"/>
+  <define-user ERR="+"  nick="d" login-id="132023497" password="jc"/>
+  <define-user nick="e" login-id="132023857" password="jc"/>
+  <define-user nick="f" login-id="132023923" password="jc"/>
+  <define-user nick="g" login-id="132023961" password="jc"/>
+  <define-user nick="h" login-id="132024003" password="jc"/>
+  <define-user nick="i" login-id="132024025" password="jc"/>
+  <define-user nick="j" login-id="132169024" password="jc"/>
+  <define-user nick="k" login-id="132169280" password="jc"/>
+  <define-user nick="l" login-id="132624322" password="jc"/>
+  <define-user nick="m" login-id="132624758" password="jc"/>
+  <define-user nick="n" login-id="45454734"  password="p"/>
+  <define-user nick="p" login-id="51690707"  password="p"/>
+  <define-user nick="q" login-id="113575243" password="p"/>
+  <define-user nick="r" login-id="114903563" password="p"/>
+  <define-user nick="s" login-id="122500891" password="p"/>
+  <define-user nick="t" login-id="122994538" password="p"/>
+  <define-user nick="u" login-id="123014271" password="p"/>
+  <define-user nick="v" login-id="128708044" password="p"/>
+  <define-user nick="w" login-id="128704654" password="p"/>
+  <define-user nick="x" login-id="128704900" password="p"/>
+  <define-user nick="y" login-id="128705297" password="p"/>
+  <define-user nick="z" login-id="128708501" password="p"/>
+  <define-user nick="z1" login-id="128709139" password="p"/>
+  <define-user nick="z2" login-id="130035330" password="p"/>
+
+  <launch-thread behavior-id="stress" src-login-id="a"/>
+  <launch-thread behavior-id="stress" src-login-id="b"/>
+  <launch-thread behavior-id="stress" src-login-id="c"/>
+  <launch-thread behavior-id="stress" src-login-id="d"/>
+  <launch-thread behavior-id="stress" src-login-id="e"/>
+  <launch-thread behavior-id="stress" src-login-id="f"/>
+  <launch-thread behavior-id="stress" src-login-id="g"/>
+  <launch-thread behavior-id="stress" src-login-id="h"/>
+  <launch-thread behavior-id="stress" src-login-id="i"/>
+  <launch-thread behavior-id="stress" src-login-id="j"/>
+  <launch-thread behavior-id="stress" src-login-id="k"/>
+  <launch-thread behavior-id="stress" src-login-id="l"/>
+  <launch-thread behavior-id="stress" src-login-id="m"/>
+  <launch-thread behavior-id="stress" src-login-id="n"/>
+  <launch-thread behavior-id="stress" src-login-id="p"/>
+  <launch-thread behavior-id="stress" src-login-id="q"/>
+  <launch-thread behavior-id="stress" src-login-id="r"/>
+  <launch-thread behavior-id="stress" src-login-id="s"/>
+  <launch-thread behavior-id="stress" src-login-id="t"/>
+  <launch-thread behavior-id="stress" src-login-id="u"/>
+  <launch-thread behavior-id="stress" src-login-id="v"/>
+  <launch-thread behavior-id="stress" src-login-id="w"/>
+  <launch-thread behavior-id="stress" src-login-id="x"/>
+  <launch-thread behavior-id="stress" src-login-id="y"/>
+  <launch-thread behavior-id="stress" src-login-id="z"/>
+  
+  <launch-thread behavior-id="stress2" src-login-id="z1"/>
+  <launch-thread behavior-id="stress2" src-login-id="z2"/>
+
+  <behavior id="stress">
+   <try>
+       <login/>
+       <log msg="ADDING ITEMS TO A CONTACT LIST"/>
+       <log msg="PLEASE IGNORE `Cannot add yourself` EXCEPTIONS"/>
+       <try>
+    <add-contact-list-item  dst-login-id="a"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="b"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="c"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="d"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="e"/><catch/></try><try>
+    
+    <add-contact-list-item  dst-login-id="f"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="g"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="h"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="i"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="j"/><catch/></try><try>
+    
+    <add-contact-list-item  dst-login-id="k"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="l"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="m"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="n"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="z2"/><catch/></try><try>
+    
+    <add-contact-list-item  dst-login-id="p"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="q"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="r"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="s"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="t"/><catch/></try><try>
+    
+    <add-contact-list-item  dst-login-id="u"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="v"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="w"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="x"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="y"/><catch/></try><try>
+    
+    <add-contact-list-item  dst-login-id="z"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="z1"/><catch/></try><try>
+       <catch/>
+       </try>
+       <log msg="DONE: ADDING ITEMS TO A CONTACT LIST"/>
+
+  <loop times="infinity">
+    <try>
+      <switch var="random(1,12)">
+        <case var="1"/>
+        <case var="2"/>
+          <set-status status="random-online-busy"/><break/>
+        <case var="3"/>
+          <add-contact-list-item dst-login-id="z1"/><break/>
+        <case var="4"/>
+          <add-contact-list-item dst-login-id="z2"/><break/>
+        <case var="5"/>
+          <remove-contact-list-item dst-login-id="z1"/><break/>
+        <case var="6"/>
+          <remove-contact-list-item dst-login-id="z2"/><break/>
+        <case var="7"/>
+          <get-user-info dst-login-id="z1"/><break/>
+        <case var="8"/>
+          <get-user-info dst-login-id="z2"/><break/>
+        <case var="9"/>
+          <send-random-contact dst-login-id="z1"/><break/>
+        <case var="10"/>
+          <send-random-contact dst-login-id="z2"/><break/>
+        <case var="11"/>
+          <send-msg to="z1">testmsgz1 (kkkkaghasfdghskdjfhgkjshdfkjghskjdfhgkjshdfghsdkfj)</send-msg><break/>
+        <case var="12"/>
+          <send-msg to="z2">testmsgz2 (kkkkaghasfdghskdjfhgkjshdfkjghskjdfhgkjshdfghsdkfj)</send-msg><break/>
+      </switch>
+    <catch/>
+      <sleep seconds="10"/>
+    </try>
+  </loop>
+  <catch/>
+  </try>
+  <logout/>
+ </behavior>
+ 
+ 
+  <behavior id="stress2">
+   <try>
+       <login/>
+       <log msg="ADDING ITEMS TO A CONTACT LIST"/>
+       <log msg="PLEASE IGNORE `Cannot add yourself` EXCEPTIONS"/>
+       <try>
+    <add-contact-list-item  dst-login-id="a"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="b"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="c"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="d"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="e"/><catch/></try><try>
+
+    <add-contact-list-item  dst-login-id="f"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="g"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="h"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="i"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="j"/><catch/></try><try>
+
+    <add-contact-list-item  dst-login-id="k"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="l"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="m"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="n"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="z2"/><catch/></try><try>
+
+    <add-contact-list-item  dst-login-id="p"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="q"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="r"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="s"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="t"/><catch/></try><try>
+
+    <add-contact-list-item  dst-login-id="u"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="v"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="w"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="x"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="y"/><catch/></try><try>
+
+    <add-contact-list-item  dst-login-id="z"/><catch/></try><try>
+    <add-contact-list-item  dst-login-id="z1"/><catch/></try><try>
+       <catch/>
+       </try>
+       <log msg="DONE: ADDING ITEMS TO A CONTACT LIST"/>
+
+  <loop times="infinity">
+    <try>
+      <set-status status="random-online-busy"/>
+    <catch/>
+      <sleep seconds="10"/>
+    </try>
+  </loop>
+  <catch/>
+  </try>
+  <logout/>
+ </behavior>
+</mns>

@@ -1,0 +1,37 @@
+cmd lstatus
+
+cmd        outMsg
+srcLoginId icq1
+dstLoginId icq
+text       lstatus
+
+cmd        changeStatus
+srcLoginId icq1
+dstLoginId icq
+status     2
+
+cmd        outMsg
+srcLoginId icq1
+dstLoginId icq
+text       lstatus2
+
+cmd endlogic
+
+cmd        lmessage
+
+cmd        changeStatus
+srcLoginId icq1
+dstLoginId icq
+status     2
+
+cmd        outMsg
+srcLoginId icq1
+dstLoginId icq
+text       lmessage
+
+cmd        changeStatus
+srcLoginId icq1
+dstLoginId icq
+status     1
+
+cmd endlogic

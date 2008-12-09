@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mns SYSTEM "mns.dtd">
+<mns>
+
+  <!--
+  nicks are for convinience.
+  nicks can be used instead of login ids anywhere.
+
+  examples:
+
+  <define-user nick="jt12"  login-id="122500891" password="p"/>
+  <define-user nick="jt14"  login-id="122994538" password="p"/>
+  <define-user nick="jt15"  login-id="123014271" password="p"/>
+  <define-user nick="devil" login-id="666"/>
+  -->
+
+
+  <!-- 
+  launch as many java threads as needed. 
+
+  behavior-ids and/or src-login-ids can be equal for 
+  different threads.
+
+  examples:
+
+  <launch-thread behavior-id="be1" src-login-id="jt14"/>
+  <launch-thread behavior-id="be1" src-login-id="jt15"/>
+  <launch-thread behavior-id="be2" src-login-id="jt15"/>
+  -->
+
+  <!--
+  behavior definitions.
+
+  currently, on any operation exception,
+  the corresponding interpreter thread
+  simply finishes.
+  
+  example:
+
+  <behavior id="be2">
+    <sleep seconds="65"/>
+    <logout/>
+  </behavior>
+  -->
+
+<!--
+Actors: 
+Mobile applet user (associated with its messaging login id ‘mobile-applet-messaging-login-id’)
+Native user (associated with its messaging login id ‘native-messaging-login-id’)
+Test messaging plugin user ‘tmpc’ (associated with its messaging login id ‘tmpc-login-id’)
+Test messaging plugin user 2 ‘tmpc2’ (associated with its messaging login id ‘tmpc2-login-id’)
+
+  <define-user nick="jt12"  login-id="122500891" password="p"/>
+  <define-user nick="jt14"  login-id="122994538" password="p"/>
+  <define-user nick="jt15"  login-id="123014271" password="p"/>
+-->
+
+  <define-user nick="mobile-applet" login-id="123014271"/>
+  <define-user nick="native" login-id="123014271"/>
+  <define-user nick="tmpc" login-id="122994538" password="p"/>
+  <define-user nick="tmpc2"  login-id="122500891" password="p"/>
+  <define-user nick="invalid" login-id="1111111111" password="p"/>
+  <define-user nick="random-contact1" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact2" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact3" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact4" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact5" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact6" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact7" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact8" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contact9" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contactA" login-id="random(100000, 100000000)"/>
+  <define-user nick="random-contactB" login-id="random(100000, 100000000)"/>
+
+<!--
+3.2     Unit Test Cases for Messaging Network Plugin Unit
+Scripts:
+Script to test general functionality, contains definitions for both tmpc and tmpc2, implements test cases defined by 3.2.1.....3.2.7.
+
+<launch-thread behavior-id="tmp" src-login-id="tmpc"/>
+-->
+
+  <launch-thread behavior-id="func-test-cases-3.2-inv" src-login-id="invalid"/>
+  <launch-thread behavior-id="func-test-cases-3.2-tmpc" src-login-id="tmpc"/>
+  <launch-thread behavior-id="func-test-cases-3.2-tmpc2" src-login-id="tmpc2"/>
+
+
+  <behavior id="func-test-cases-3.2-inv">
+        <thread-meeting barrier-participants-count="2" meeting-id="before-invalid"/>
+        <log msg="### · Залогинить tmpc с невалидным login id, например “111111111111111111111” для icq network.  Плагин должен проигнорировать запрос и выдать ошибку."/>
+        <try>
+         <login>
+          <contact-list>
+            <item login-id="random-contact1"/>
+            <item login-id="random-contact2"/>
+            <item login-id="random-contact3"/>
+            <item login-id="random-contact4"/>
+            <item login-id="random-contact5"/>
+            <item login-id="random-contact6"/>
+            <item login-id="random-contact7"/>
+            <item login-id="random-contact8"/>
+            <item login-id="random-contact9"/>
+            <item login-id="random-contactA"/>
+            <item login-id="random-contactB"/>
+          </contact-list>
+         </login>
+        <catch/>
+        </try>
+        <thread-meeting barrier-participants-count="2" meeting-id="after-invalid"/>
+  </behavior>
+
+  <behavior id="func-test-cases-3.2-tmpc">
+        <log msg="### Functionality test cases."/>
+        <log msg="### 3.2       Unit Test Cases for Messaging Network Plugin Unit"/>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="after-title"/>  
+
+        <log msg="### 3.2.1     Управление клиентом"/>
+        <log msg="### · Залогинить  tmpc"/>
+
+        <login>
+          <contact-list>
+            <item login-id="random-contact1"/>
+            <item login-id="random-contact2"/>
+            <item login-id="random-contact3"/>
+            <item login-id="random-contact4"/>
+            <item login-id="random-contact5"/>
+            <item login-id="random-contact6"/>
+            <item login-id="random-contact7"/>
+            <item login-id="random-contact8"/>
+            <item login-id="random-contact9"/>
+            <item login-id="random-contactA"/>
+            <item login-id="random-contactB"/>
+          </contact-list>
+        </login>
+
+        <log msg="### · Залогоффить tmpc"/>
+
+        <logout/>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="before-invalid"/>
+
+        <sleep seconds="20"/> <!-- this sleep is necessary to bypass relogin rate control exception  on the next login -->
+
+        <thread-meeting barrier-participants-count="2" meeting-id="after-invalid"/>
+
+        <log msg="### 3.2.1    Управление контакт листом"/>
+        <log msg="### · Залогинить tmpc "/>
+
+          <login>
+            <contact-list>
+              <item login-id="random-contact1"/>
+              <item login-id="random-contact2"/>
+              <item login-id="random-contact3"/>
+              <item login-id="random-contact4"/>
+              <item login-id="random-contact5"/>
+              <item login-id="random-contact6"/>
+              <item login-id="random-contact7"/>
+              <item login-id="random-contact8"/>
+              <item login-id="random-contact9"/>
+              <item login-id="random-contactA"/>
+            </contact-list>
+          </login>
+
+        <log msg="### · Добавить несколько (2-3) контактов в контакт лист of tmpc."/>
+
+        <add-contact-list-item dst-login-id="random-contactB"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <loop times="random(1,2)">
+          <add-contact-list-item dst-login-id="random(1000000, 10000000)"/>
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        </loop>
+
+        <log msg="### · Попробовать повторно добавить один из контактов, уже присутствующих в контакт листе of tmpc. Плагин должен молча проигнорировать данный запрос, контакт лист должен остаться неизменным."/>
+
+        <add-contact-list-item dst-login-id="random-contactB"/>
+
+        <log msg="### · Удалить несколько (5-10) контактов из контакт листа of tmpc."/>
+
+        <remove-contact-list-item dst-login-id="random-contact1"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <remove-contact-list-item dst-login-id="random-contact2"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <remove-contact-list-item dst-login-id="random-contact3"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <remove-contact-list-item dst-login-id="random-contact4"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <remove-contact-list-item dst-login-id="random-contact5"/>
+        
+        <loop times="random(0,1)">
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+          <remove-contact-list-item dst-login-id="random-contact6"/>
+        </loop>
+        <loop times="random(0,1)">
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+          <remove-contact-list-item dst-login-id="random-contact7"/>
+        </loop>
+        <loop times="random(0,1)">
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+          <remove-contact-list-item dst-login-id="random-contact8"/>
+        </loop>
+        <loop times="random(0,1)">
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+          <remove-contact-list-item dst-login-id="random-contact9"/>
+        </loop>
+        <loop times="random(0,1)">
+          <sleep seconds="1"/>  <!-- another rate control code needed! -->
+          <remove-contact-list-item dst-login-id="random-contactA"/>
+        </loop>
+
+        <log msg="### 3.2.2     Управление состоянием"/>
+        <log msg="### · Сменить статус of tmpc на Offline. В контакт листах нативного  клиента и mobile апплет клиента, в которых login id of tmpc содержится как контакт, должно произойти изменение его состояния на Offline."/>
+
+        <set-status status="offline"/>
+        <sleep seconds="20"/>
+        
+        <log msg="### · Залогинить tmpc с начальным статусом Online. В контакт листах нативного  клиента и mobile апплет клиента, в которых login id of tmpc содержится как контакт, должно произойти изменение его состояния на Online."/>
+
+        <login>
+          <contact-list>
+            <item login-id="random-contact1"/>
+            <item login-id="random-contact2"/>
+            <item login-id="random-contact3"/>
+            <item login-id="random-contact4"/>
+            <item login-id="random-contact5"/>
+            <item login-id="random-contact6"/>
+            <item login-id="random-contact7"/>
+            <item login-id="random-contact8"/>
+            <item login-id="random-contact9"/>
+            <item login-id="random-contactA"/>
+          </contact-list>
+        </login>
+
+        <log msg="### · Сменить статус of tmpc на Busy. В контакт листах нативного клиента и mobile апплет клиента, в которых login id of tmpc содержится как контакт, должно произойти изменение его состояния на Busy (for mobile applet user), и на Occupied (for native user)."/>
+
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+        <set-status status="busy"/>
+        <sleep seconds="6"/>
+
+        <log msg="### · Залогинить tmpc2."/>
+        <thread-meeting barrier-participants-count="2" meeting-id="hey, tmpc2, please login!"/>
+        <thread-meeting barrier-participants-count="2" meeting-id="tmpc2 logged in"/>
+
+        <log msg="###   Добавить tmpc2 в контакт лист tmpc."/>
+        <add-contact-list-item dst-login-id="tmpc2"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+
+        <log msg="###   Последовательно менять статус у tmpc2."/>
+        <log msg="###   Эти изменения должны отображаться в контакт-листах tmpc, нативного клиента, и mobile апплет клиента, в которых tmpc login id содержится как контакт."/>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="hey, tmpc2, change status many times!"/>
+        <thread-meeting barrier-participants-count="2" meeting-id="tmpc2 done with changing status"/>
+
+        <log msg="### 3.2.3    Отправка сообщений"/>
+        <log msg="### · Отправить сообщение from tmpc to native user."/>
+
+        <send-msg to="native">
+          message from tmpc to native user
+        </send-msg>
+
+        <log msg="### · Отправить сообщение from tmpc to mobile applet user."/>
+
+        <send-msg to="mobile-applet">
+          message from tmpc to to mobile applet user
+        </send-msg>
+
+        <log msg="### 3.2.4     Прием сообщений"/>
+        <log msg="### · Отправить несколько (5-10) сообщений from mobile applet user to tmpc. Проверить получение сообщений в том порядке, в котором они были посланы."/>
+        <log msg="### · Отправить несколько (5-10) сообщений from native user to tmpc. Проверить получение сообщений в том порядке, в котором они были посланы."/>
+        <log msg="### · Отправить контакт from native user to tmpc . Проверить его получение в текстовом виде."/>
+        <log msg="### · Отправить URL from native user to tmpc. Проверить его получение в текстовом виде."/>
+
+        <log msg="### 3.2.5     Обработка неподдерживаемых функций  клиентов"/>
+        <log msg="### · From native user, отправить на tmpc запрос на передачу файла. Запрос должен быть отклонен."/>
+        <log msg="### · From native user, отправить на tmpc запрос на инициацию чата. Запрос должен быть отклонен."/>
+        <log msg="### · From native user, отправить на tmpc запрос на pc2pc call. Запрос должен быть отклонен."/>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="before-3.2.7"/>
+        <!-- here the 3.2.7-a-send-empty-msgs actions execute -->
+        <thread-meeting barrier-participants-count="2" meeting-id="after-3.2.7-a"/>
+
+        <!-- here the 3.2.7-b actions execute -->
+        <log msg="### · (b) From mobile applet user, отправить на tmpc несколько сообщений с нулевой длиной."/>
+        <log msg="### · Повторить (b) для сообщений с большими размерами (максимально возможный размер данных на карте)."/>
+        <log msg="### · Повторить (b) для сообщений с очень большими размерами (превышающими максимально возможный размер данных на карте в 10, 100 раз)."/>
+        <log msg="### · Повторить (b) для сообщений, содержащих символы с контрольными кодами (ASCII 00-32)."/>
+	<sleep minutes="10"/>
+
+        <log msg="### · Залогоффить tmpc и tmpc2."/>
+        <logout/>
+        <thread-meeting barrier-participants-count="2" meeting-id="hey tmpc2 logoff ye!"/>
+        <thread-meeting barrier-participants-count="2" meeting-id="yessire tmpc2 logged off."/>
+
+        <log msg="### [END OF] 3.2 Unit Test Cases for Messaging Network Plugin Unit"/>
+        <log msg="### ======================================================================="/>
+  </behavior>
+
+  <behavior id="func-test-cases-3.2-tmpc2">
+        <thread-meeting barrier-participants-count="2" meeting-id="after-title"/>  
+
+        <thread-meeting barrier-participants-count="2" meeting-id="hey, tmpc2, please login!"/>
+
+        <login>
+        </login>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="tmpc2 logged in"/>
+
+        <!-- 
+        <log msg="###   Последовательно менять статус у tmpc2."/>
+        <log msg="###   Эти изменения должны отображаться в контакт-листах tmpc, нативного клиента, и mobile апплет клиента, в которых tmpc login id содержится как контакт."/>
+        -->
+
+        <thread-meeting barrier-participants-count="2" meeting-id="hey, tmpc2, change status many times!"/>
+
+        <loop times="3">
+          <set-status status="online"/>
+          <sleep seconds="6"/>
+          <set-status status="busy"/>
+          <sleep seconds="6"/>
+        </loop>
+        <set-status status="online"/>
+        <sleep seconds="1"/>  <!-- another rate control code needed! -->
+
+        <thread-meeting barrier-participants-count="2" meeting-id="tmpc2 done with changing status"/>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="before-3.2.7"/>  
+        <log msg="### 3.2.7     Критические ситуации"/>
+
+        <log msg="### · (a) From tmpc2, отправить на tmpc и mobile applet user несколько сообщений с нулевой длиной."/>
+
+        <try>
+          <loop times="random(3,3)">
+            <send-msg to="tmpc"></send-msg>
+          </loop>
+        <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+        </try>
+
+        <log msg="### · Повторить (a) для сообщений, содержащих символы с контрольными кодами (ASCII 00-32)."/>
+	
+        <loop times="random(3,3)">
+	 <try>
+	    <send-msg to="tmpc" type="with-ascii-00-to-31-appended">
+     	      msg with ascii 00..31
+	    </send-msg>
+         <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+         </try>
+        </loop>
+
+<!--
+</behavior>
+
+<behavior id="tmp">
+ <login/>
+-->
+
+        <log msg="### · Повторить (a) для сообщений с большими размерами (максимально возможный размер данных на карте)."/>
+
+        <loop times="random(2,2)">
+         <try>
+          <send-msg to="tmpc" 
+		type="with-readable-stuff-appended" 
+		msg-size-chars="250">
+ 	    big msg 250 chars
+          </send-msg>
+         <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+         </try>
+        </loop>
+
+        <log msg="### · Повторить (a) для сообщений с очень большими размерами (превышающими максимально возможный размер данных на карте в 10 раз)."/>
+
+        <loop times="random(2,2)">
+         <try>
+          <send-msg to="tmpc" 
+		type="with-readable-stuff-appended" 
+		msg-size-chars="2500">
+	    very big msg 2500 chars
+          </send-msg>
+         <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+         </try>
+        </loop>
+
+        <log msg="### · Повторить (a) для сообщений с очень большими размерами (превышающими максимально возможный размер данных на карте в 100 раз)."/>
+
+        <loop times="random(2,2)">
+         <try>
+          <send-msg to="tmpc" 
+		type="with-readable-stuff-appended" 
+		msg-size-chars="2500">
+	    very big msg 25000 chars
+          </send-msg>
+         <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+         </try>
+        </loop>
+
+        <log msg="### · Повторить (a) для сообщений с размером, максимальным для messaging plugina (превышающими максимально возможный размер данных на карте в ~30 раз)."/>
+
+        <loop times="random(2,2)">
+         <try>
+          <send-msg to="tmpc" 
+		type="with-readable-stuff-appended" 
+		msg-size-chars="7000">
+	    very big msg 7000 chars
+          </send-msg>
+         <catch/>
+          <log msg="sleeping before relogin, to avoid rate relogin exception"/>
+          <sleep seconds="20"/>
+          <try>
+            <login/>
+          <catch/>
+          </try>
+         </try>
+        </loop>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="after-3.2.7-a"/>
+        <thread-meeting barrier-participants-count="2" meeting-id="hey tmpc2 logoff ye!"/>
+
+	<try>
+          <logout/>
+	<catch/>
+	</try>
+
+        <thread-meeting barrier-participants-count="2" meeting-id="yessire tmpc2 logged off."/>
+   </behavior>
+</mns>
+
+
+<!--
+        <on-msg>
+          <reply>
+            A reply from mns script/be1
+          </reply>
+        </on-msg>
+        <sleep minutes="0"/>
+        <sleep seconds="0"/>
+        <sleep minutes="random(0,1)" seconds="random(1,10)"/>
+        <loop times="random(10, 20)">
+          <sleep minutes="random(0,0)" seconds="random(1,10)"/>
+        </loop>
+        <loop times="infinity">
+          <send-msg to="jt14">
+            labudabudabuda from mns - random
+          </send-msg>
+	</loop>
+-->

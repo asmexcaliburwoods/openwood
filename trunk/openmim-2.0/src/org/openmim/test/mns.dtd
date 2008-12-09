@@ -1,0 +1,82 @@
+<!-- <?xml encoding="UTF-8"?> -->
+
+<!-- 
+
+Script language is case-sensitive.
+
+
+Possible numeric expressions:
+
+- "Sany non-negative integer numberS",
+- "SinfinityS",
+- "SrandomS(SrangeStartS,SrangeEndS)S",
+
+where S is optional whitespace, any non-negative integer number means any non-negative integer number, infinity [in a loop] means the eternal loop, rangeStart and rangeEnd are any integer numbers.
+
+In places other than loop times the infinity value is not allowed.
+
+<loop times="0"> means "do not execute the loop body."
+
+Zero sleep time is allowed and means "skip the sleep."
+
+-->
+
+<!ELEMENT mns (define-user|behavior|launch-thread)+>
+
+<!ELEMENT define-user EMPTY>
+<!ATTLIST define-user nick      CDATA #REQUIRED>
+<!ATTLIST define-user login-id  ID    #REQUIRED>
+<!ATTLIST define-user password  CDATA #IMPLIED>
+
+<!ELEMENT behavior (show-button|thread-meeting|log|loop|sleep|send-msg|add-contact-list-item|remove-contact-list-item|login|logout|set-status|on-msg)+>
+<!ATTLIST behavior id       ID #REQUIRED>
+
+<!ELEMENT launch-thread EMPTY>
+<!ATTLIST launch-thread behavior-id   CDATA #REQUIRED>
+<!ATTLIST launch-thread src-login-id  CDATA #REQUIRED>
+
+<!ELEMENT loop (show-button|thread-meeting|log|loop|sleep|send-msg|add-contact-list-item|remove-contact-list-item|login|logout|set-status|on-msg)+>
+<!ATTLIST loop times      CDATA 'infinity'>
+
+<!ELEMENT sleep EMPTY>
+<!ATTLIST sleep seconds     CDATA #IMPLIED>
+<!ATTLIST sleep minutes     CDATA #IMPLIED>
+<!-- either seconds or minutes is required -->
+
+<!ELEMENT log EMPTY>
+<!ATTLIST log msg CDATA #REQUIRED>
+
+<!ELEMENT thread-meeting EMPTY>
+<!ATTLIST thread-meeting barrier-participants-count   CDATA #REQUIRED>
+<!ATTLIST thread-meeting meeting-id     ID    #REQUIRED>
+
+<!ELEMENT show-button (#PCDATA)>  <!-- this PCdata is logged and also displayed as a label in a dialog -->
+<!ATTLIST show-button button-text   CDATA 'Proceed'>
+<!ATTLIST show-button skip-text   CDATA 'Skip all buttons'>
+
+<!ELEMENT login (contact-list)>
+
+<!ELEMENT contact-list (item)+>
+
+<!ELEMENT item EMPTY>
+<!ATTLIST item login-id     CDATA #REQUIRED>
+
+<!ELEMENT logout EMPTY>
+
+<!ELEMENT send-msg (#PCDATA)>
+<!ATTLIST send-msg to     CDATA #REQUIRED>
+<!ATTLIST send-msg type     CDATA #IMPLIED>  <!-- (null|'with-ascii-00-to-31-appended'|'with-readable-stuff-appended') -->
+<!ATTLIST send-msg msg-size-chars CDATA #IMPLIED>
+
+<!ELEMENT add-contact-list-item EMPTY>
+<!ATTLIST add-contact-list-item dst-login-id CDATA #REQUIRED>
+
+<!ELEMENT remove-contact-list-item EMPTY>
+<!ATTLIST remove-contact-list-item dst-login-id CDATA #REQUIRED>
+
+<!ELEMENT set-status EMPTY>
+<!ATTLIST set-status status (online|offline|busy|random-online-busy) #REQUIRED>
+
+<!ELEMENT on-msg (reply)+>
+
+<!ELEMENT reply (#PCDATA)>
