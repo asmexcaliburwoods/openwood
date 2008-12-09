@@ -1,7 +1,5 @@
 #summary Short summary of SVN repository contents.
 
-=SVN Repository Summary=
-
 == Summary ==
 
  * https://openwood.googlecode.com/svn/trunk/chat_multiplexor - Connectors to ICQ, IRC, XMPP/Google Talk;
