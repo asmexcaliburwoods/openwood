@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mns SYSTEM "mns.dtd">
+<mns>
+
+  <define-user nick="mtc1.1" login-id="123014271" password="p"/>
+  <define-user nick="mtc1.2" login-id="122500891" password="p"/>
+  <define-user nick="mtc1.3" login-id="122994538" password="p"/>
+  <define-user nick="mtc1.4" login-id="45454734"  password="p"/>
+  <define-user nick="mtc1.5" login-id="51690707"  password="p"/>
+
+  <define-user nick="mtc2.1auth" login-id="128704654" password="p"/>
+  <define-user nick="mtc2.2auth" login-id="128704900" password="p"/>
+  <define-user nick="mtc2.3auth" login-id="128705297" password="p"/>
+
+  <define-user nick="mtc3.1" login-id="123014271" password="p"/>
+  <define-user nick="mtc3.2" login-id="122500891" password="p"/>
+  <define-user nick="mtc3.3" login-id="122994538" password="p"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-1" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-1" src-login-id="mtc1.2"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+
+  <behavior id="additional-test-2-behavior-1">  <!-- 2 threads -->
+	<try>
+    	  <login/>
+	<catch/>
+	</try>
+        <thread-meeting
+		barrier-participants-count="2"
+		meeting-id="after-additional-test-2-login"/>
+
+	<log msg="### 1.1.1	Запрос контактной информации"/>
+	<log msg="### ·	В цикле 1..100 для каждого из mtc1.1/mtc1.2 запрашивать контактную информацию о случайно выбранном контакте из контакт-листа. Сервер должен присылать запрошенную контактную информацию."/>
+	<log msg="### ·	Повторить в параллельных потоках (один поток для mtc1.1, второй – для mtc1.2)."/>
+
+	<loop times="10">
+	  <try>
+	    <switch var="random(1,3)">
+		<case var=" 1"/><get-user-info dst-login-id="mtc3.1"/><break/>
+		<case var=" 2"/><get-user-info dst-login-id="mtc3.2"/><break/>
+		<case var=" 3"/><get-user-info dst-login-id="mtc3.3"/><break/>
+	    </switch>
+	  <catch/>
+	  </try>
+        </loop>
+
+
+
+
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-test-userinfo-multithreaded"/>
+	<log msg="### ·	Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="after-test-userinfo-multithreaded"/>
+	<log msg="### 1.1.2	Отправка контактной информации"/>
+	<log msg="### ·	В цикле 1..100 для каждого из mtc1.1/mtc1.2 посылать контактную информацию случайно выбранного контакта другому так же случайно выбранному контакту в контакт-листе."/>
+	<log msg="### ·	Повторить в параллельных потоках (один поток для mtc1.1, второй – для mtc1.2)."/>
+
+	<loop times="10">
+	  <try>
+	    <switch var="random(1,3)">
+    <case var=" 1"/><send-random-contact dst-login-id="mtc3.1"/><break/>
+    <case var=" 2"/><send-random-contact dst-login-id="mtc3.2"/><break/>
+    <case var=" 3"/><send-random-contact dst-login-id="mtc3.3"/><break/>
+	    </switch>
+	  <catch/>
+	  </try>
+        </loop>
+
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-test-sendcontacts-multithreaded"/>
+	<log msg="### · Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="after-test-sendcontacts-multithreaded"/>
+	<try>
+    	  <logout/>
+	<catch/>
+	</try>
+
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-end"/>
+        <log msg="### COMPLETE."/>
+  </behavior>
+
+  <behavior id="additional-test-2-behavior-2">  <!-- 8 threads -->
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-test-userinfo-multithreaded"/>
+	<log msg="### ·	Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+	<loop times="10">
+	  <try>
+	    <switch var="random(1,3)">
+		<case var=" 1"/><get-user-info dst-login-id="mtc3.1"/><break/>
+		<case var=" 2"/><get-user-info dst-login-id="mtc3.2"/><break/>
+		<case var=" 3"/><get-user-info dst-login-id="mtc3.3"/><break/>
+	    </switch>
+	  <catch/>
+	  </try>
+        </loop>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="after-test-userinfo-multithreaded"/>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-test-sendcontacts-multithreaded"/>
+	<log msg="### · Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+	<loop times="10">
+	  <try>
+	    <switch var="random(1,3)">
+    <case var=" 1"/><send-random-contact dst-login-id="mtc3.1"/><break/>
+    <case var=" 2"/><send-random-contact dst-login-id="mtc3.2"/><break/>
+    <case var=" 3"/><send-random-contact dst-login-id="mtc3.3"/><break/>
+	    </switch>
+	  <catch/>
+	  </try>
+        </loop>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="after-test-sendcontacts-multithreaded"/>
+        <thread-meeting
+		barrier-participants-count="10"
+		meeting-id="before-end"/>
+        <log msg="### COMPLETE."/>
+  </behavior>
+</mns>

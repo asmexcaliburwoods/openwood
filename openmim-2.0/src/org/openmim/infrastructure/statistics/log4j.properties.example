@@ -1,0 +1,12 @@
+#statistics - configurable part
+log4j.appender.statistics.File=./statistics.log
+log4j.appender.statistics.MaxFileSize=100MB
+#two files will be kept: one large and one latest.
+log4j.appender.statistics.MaxBackupIndex=1
+#statistics - static part
+log4j.category.org.openmim.infrastructure.statistics.Statistics=INFO,statistics
+log4j.appender.statistics=org.openmim.infrastructure.log4j.SafeRollingFileAppender
+log4j.appender.statistics.Append=true
+log4j.appender.statistics.layout=org.apache.log4j.PatternLayout
+#log4j.appender.statistics.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS},%m%n
+log4j.appender.statistics.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss},%m%n

@@ -1,0 +1,310 @@
+tests using ObjectCache based on ArrayList:
+
+V:\Server\src\ru\novosoft\util>java -cp classes ObjectCacheTest
+sizeof(Object): 8 (8.0) bytes
+free  memory: 1.3929519653320312 MB
+total memory: 2.63671875 MB
+creating 1825770 objects using `new' (taking 13 MB of memory)...
+done.  Time spent: 260 millis
+creating 1825770 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 521 millis
+creating 1825770 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 271 millis
+creating 1825770 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 491 millis
+creating 1825770 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 440 millis
+creating 1825770 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 391 millis
+free  memory: 1.67889404296875 MB
+total memory: 2.15625 MB
+creating 2200560 objects using `new' (taking 16 MB of memory)...
+done.  Time spent: 290 millis
+creating 2200560 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 591 millis
+creating 2200560 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 341 millis
+creating 2200560 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 581 millis
+creating 2200560 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 530 millis
+creating 2200560 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 460 millis
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+
+
+
+
+
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+creating 22005800 objects using `new' (taking 167 MB of memory)...
+done.  Time spent: 3054 millis
+creating 22005800 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 5908 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 3274 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 5918 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 5367 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 4756 millis
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+creating 22005800 objects using `new' (taking 167 MB of memory)...
+done.  Time spent: 2784 millis
+creating 22005800 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 5928 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 3294 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 5928 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 5377 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 4726 millis
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+creating 22005800 objects using `new' (taking 167 MB of memory)...
+done.  Time spent: 3104 millis
+creating 22005800 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 7760 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 3374 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 6569 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 5677 millis
+creating 22005800 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 4776 millis
+
+
+V:\Server\src\ru\novosoft\util>java -cp classes ObjectCacheTest
+sizeof(Object): 8 (8.0) bytes
+free  memory: 1.3929519653320312 MB
+total memory: 2.63671875 MB
+creating 182577000 objects using `new' (taking 1392 MB of memory)...
+done.  Time spent: 25153 millis
+creating 182577000 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 49575 millis
+creating 182577000 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 28497 millis
+creating 182577000 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 55322 millis
+creating 182577000 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 45550 millis
+creating 182577000 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 40602 millis
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+creating 220058000 objects using `new' (taking 1678 MB of memory)...
+done.  Time spent: 30730 millis
+creating 220058000 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 61050 millis
+creating 220058000 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 35085 millis
+creating 220058000 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 63072 millis
+creating 220058000 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 66736 millis
+creating 220058000 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 51717 millis
+free  memory: 1.6789093017578125 MB
+total memory: 2.15625 MB
+
+
+
+tests using ObjectCache based on Object[]
+
+V:\Server\src\ru\novosoft\util>java -cp classes ObjectCacheTest
+sizeof(Object): 8 (8.0) bytes
+free  memory: 1.392974853515625 MB
+total memory: 2.63671875 MB
+creating 18258000 objects using `new' (taking 139 MB of memory)...
+done.  Time spent: 2544 millis
+creating 18258000 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 2553 millis
+creating 18258000 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 2773 millis
+creating 18258000 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 2864 millis
+creating 18258000 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 2954 millis
+creating 18258000 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 2764 millis
+free  memory: 1.396453857421875 MB
+total memory: 2.63671875 MB
+creating 18303600 objects using `new' (taking 139 MB of memory)...
+done.  Time spent: 2583 millis
+creating 18303600 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 2884 millis
+creating 18303600 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 2893 millis
+creating 18303600 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 2984 millis
+creating 18303600 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 3445 millis
+creating 18303600 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 3125 millis
+free  memory: 1.3964614868164062 MB
+total memory: 2.63671875 MB
+creating 18303700 objects using `new' (taking 139 MB of memory)...
+done.  Time spent: 2563 millis
+creating 18303700 objects using ObjectCache, release() rate: 1.0...
+done.  Time spent: 2853 millis
+creating 18303700 objects using ObjectCache, release() rate: 0.0...
+done.  Time spent: 2874 millis
+creating 18303700 objects using ObjectCache, release() rate: 0.75...
+done.  Time spent: 3565 millis
+creating 18303700 objects using ObjectCache, release() rate: 0.5...
+done.  Time spent: 2803 millis
+creating 18303700 objects using ObjectCache, release() rate: 0.25...
+done.  Time spent: 2753 millis
+free  memory: 1.3964614868164062 MB
+total memory: 2.63671875 MB
+
+
+сырец ObjectCache using Object[]:
+
+------------------------------------------------------------------------
+package org.openmim.infrastructure;
+
+import java.util.*;
+
+public abstract class ObjectCache
+{
+  private final Object[] cache;
+  private int size;
+  private final int max;
+  
+  protected abstract Object create();
+  
+  /**
+    @param init  number of instances initially created
+    @param max   maximum number of instances cached
+  */
+  public ObjectCache(int init, int max)
+  {
+    if (init < 0) throw new IllegalArgumentException("init < 0: init="+init);
+    if (max < init || max == 0) throw new IllegalArgumentException("max < init || max == 0: init="+init+", max="+max);
+    this.max = max;
+    cache = new Object[max];
+    for (int i = 0; i < init; ++i) cache[i] = create();
+    size = init;
+  }
+  
+  /**
+    No instances created initially.
+    @param max  maximum number of instances cached
+  */
+  public ObjectCache(int max)
+  {
+    this(0, max);
+  }
+  
+  public final synchronized Object get()
+  {
+    if (size > 0) return cache[--size];
+    else return create();
+  }
+  
+  public final synchronized void release(Object o)
+  {
+    //if (DEBUG && cache.indexOf(o) != -1) throw new RuntimeException("release of released object");
+    if (size < max) { cache[size++] = o; }
+  }
+}
+------------------------------------------------------------------------
+
+
+сырец ObjectCacheTest:
+
+------------------------------------------------------------------------
+import java.util.*;
+import org.openmim.infrastructure.ObjectCache;
+
+public class ObjectCacheTest
+{
+  private final static int OBJECT_CACHE_MAX_CAPACITY = 100000;
+  private final static int SIZEOF_MEASURE_OBJECT_COUNT = 1000;
+  private final static Runtime rt = Runtime.getRuntime();
+  private static long OBJCOUNT = -1;
+  
+  private static ObjectCache cache = new ObjectCache(OBJECT_CACHE_MAX_CAPACITY, OBJECT_CACHE_MAX_CAPACITY)
+  {
+    protected Object create()
+    {
+      return new Object();
+    }
+  };
+  
+  public static void main(String[] args)
+  {
+    try
+    {
+      Object[] arr = new Object[SIZEOF_MEASURE_OBJECT_COUNT];
+      gc();
+      long m1 = rt.freeMemory();
+      for (int i = 0; i < SIZEOF_MEASURE_OBJECT_COUNT; ++i) arr[i] = new Object();
+      long m2 = rt.freeMemory();
+      double sizeof_d = (m1-m2+0.0)/SIZEOF_MEASURE_OBJECT_COUNT;
+      int sizeof = (int) Math.round(sizeof_d);
+      System.out.println("sizeof(Object): "+sizeof+" ("+sizeof_d+") bytes");
+      arr = null;
+      gc();
+      for(;;)
+      {
+        System.out.println("free  memory: "+((m1+0.0)/(1024*1024))+" MB");
+        System.out.println("total memory: "+((rt.totalMemory()+0.0)/(1024*1024))+" MB");
+        OBJCOUNT = (100 * m1)/sizeof;
+        System.out.println("creating "+OBJCOUNT+" objects using `new' (taking "+((OBJCOUNT * sizeof)/(1024*1024))+" MB of memory)...");
+        gc();
+        int oc = (int) OBJCOUNT;
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < oc; ++i) new Object();
+        long end = System.currentTimeMillis();
+        System.out.println("done.  Time spent: "+(end-start)+" millis");
+        cacheTest(8);
+        cacheTest(0);
+        cacheTest(6);
+        cacheTest(4);
+        cacheTest(2);
+        m1 = rt.freeMemory();
+      }
+    }
+    catch (Throwable tr)
+    {
+      tr.printStackTrace();
+    }
+  }
+  
+  private static void gc()
+  {
+    rt.gc();
+    rt.gc();
+    rt.gc();
+    try { Thread.currentThread().sleep(3000); } catch (InterruptedException ex) {}
+  }
+  
+  private static void cacheTest(int RELEASE_RATE) //0..8
+  {
+    System.out.println("creating "+OBJCOUNT+" objects using ObjectCache, release() rate: "+((RELEASE_RATE+0.0)/8)+"...");
+    gc();
+    int oc = (int) OBJCOUNT;
+    ObjectCache cache = ObjectCacheTest.cache;
+    long start = System.currentTimeMillis();
+    if (RELEASE_RATE == 8)
+      for (int i = 0; i < oc; ++i) { cache.release(cache.get()); }
+    else
+      if (RELEASE_RATE == 0)
+        for (int i = 0; i < oc; ++i) { cache.get(); }
+      else
+        for (int i = 0; i < oc; ++i) { Object o = cache.get(); if ((i & 7) <= RELEASE_RATE) cache.release(o); }
+    long end = System.currentTimeMillis();
+    System.out.println("done.  Time spent: "+(end-start)+" millis");
+    gc();
+  }
+}
+------------------------------------------------------------------------

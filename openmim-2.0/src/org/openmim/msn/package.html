@@ -1,0 +1,41 @@
+<title>package org.openmim.msn</title>
+<h3>package org.openmim.msn</h3>
+<p>
+<img src=exception%20delivery.gif border=0>
+<p><pre>
+TaskMan calls:
+  Session tick() for each Session
+  
+Session tick() calls:  
+  SC tick(Session ses) for each SC in this Session
+
+SC tick(Session ses) calls:
+  SC public void handleServerMessage();
+        //exceptions are explicitly delivered to session by SC
+  TransMan public final void cleanup()
+        //no exceptions
+  
+SC handleServerMessage() calls:
+  TransMan public final bool deliver(int trid, String cmd, String args)
+        //exceptions are delivered to handleInput() & subsequently to session
+  SC serverRequest()
+        //server requests with no trid or with unknown trid are delivered
+        //to SC's serverRequest() method
+  
+SC service methods create transactions and start() them.
+
+TransMan start() calls:
+  Tr.clientRequest()<!-- //exceptions are explicitly delivered to session by TrMan via TC & SC.-->
+        //exceptions cause Tr.finish()
+
+TransMan deliver() calls:
+  Tr serverResponse()
+        //exceptions are delivered to deliver(), handleInput()
+        //& subsequently to session
+        //exceptions cause Tr.finish()
+
+<hr>
+
+- when third user joins the SSS session, MIM client leaves this session.
+
+</pre>

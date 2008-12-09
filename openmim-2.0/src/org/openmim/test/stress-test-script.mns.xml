@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mns SYSTEM "mns.dtd">
+<mns>
+
+<!--
+Actors:
+
+Messaging Test Clients “mtc1.1”, …, “mtc1.5” (uin and password are known)
+
+Messaging Test Accounts “mtc2.1auth”, …, “mtc2.3auth” – icq accounts which require authorization (uin only is known by mtc1.1, …, mtc1.5), these auth accounts are logged on as mobile mim applets.
+
+Messaging Test Accounts “mtc3.1”, …, “mtc3.3” – icq accounts which are logged on as native clients.  Accounts mtc3.* do not have any of mtc1.* on their contact list.
+
+Messaging Test Accounts “mtc4.1”, …, “mtc4.20” – random icq accounts (with unknown password).
+
+
+45454734  p jt1
+51690707  p jt7
+
+122500891 p jt12 //auth required
+122994538 p jt14 //auth required
+123014271 p jt15 //auth required
+
+128704654 p jt17 //auth required
+128704900 p jt18 //auth required
+128705297 p jt19 //auth required
+
+128708044 p jt16 //auth required
+128708501 p jt20 //auth required
+128709139 p jt21 //auth not required
+-->
+
+  <define-user nick="mtc1.1" login-id="123014271" password="p"/>
+  <define-user nick="mtc1.2" login-id="122500891" password="p"/>
+  <define-user nick="mtc1.3" login-id="122994538" password="p"/>
+  <define-user nick="mtc1.4" login-id="45454734"  password="p"/>
+  <define-user nick="mtc1.5" login-id="51690707"  password="p"/>
+
+  <define-user nick="mtc2.1auth" login-id="128704654" password="p"/>
+  <define-user nick="mtc2.2auth" login-id="128704900" password="p"/>
+  <define-user nick="mtc2.3auth" login-id="128705297" password="p"/>
+
+  <define-user nick="mtc3.1" login-id="123014271" password="p"/>
+  <define-user nick="mtc3.2" login-id="122500891" password="p"/>
+  <define-user nick="mtc3.3" login-id="122994538" password="p"/>
+
+  <define-user nick="mtc4.1" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.2" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.3" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.4" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.5" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.6" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.7" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.8" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.9" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.10" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.11" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.12" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.13" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.14" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.15" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.16" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.17" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.18" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.19" login-id="random(100000, 100000000)"/>
+  <define-user nick="mtc4.20" login-id="random(100000, 100000000)"/>
+
+  <!--
+  2.2 Unit Test Cases for Messaging Network (ICQ) Plug-in Unit
+  Scripts: Stress test script
+  -->
+
+  <launch-thread behavior-id="stress" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="stress" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="stress" src-login-id="mtc1.3"/>
+  <launch-thread behavior-id="stress" src-login-id="mtc1.4"/>
+  <launch-thread behavior-id="stress" src-login-id="mtc1.5"/>
+
+  <launch-thread behavior-id="additional-test" src-login-id="mtc1.1"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-1" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-1" src-login-id="mtc1.2"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.1"/>
+
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+  <launch-thread behavior-id="additional-test-2-behavior-2" src-login-id="mtc1.2"/>
+
+  <behavior id="stress">
+  <log msg="### 2.2.1 Управление и работа с контакт-листом."/>
+  <log msg="### ·  Залогинить все клиенты mtc1.1…mtc1.5."/>
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="login"/>
+  <try>
+     <login>
+      <contact-list>
+        <item login-id="111111111"/>
+        <item login-id="111111112"/>
+        <item login-id="111111113"/>
+        <item login-id="111111114"/>
+        <item login-id="111111115"/>
+        <item login-id="111111116"/>
+        <item login-id="111111117"/>
+        <item login-id="111111118"/>
+        <item login-id="111111119"/>
+      </contact-list>
+     </login>
+  <catch/>
+  </try>
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="after login"/>
+  <log msg="### ·  В цикле 200 раз mtc1.1...1.5 должны добавлять в контакт лист и удалять из него случайное количество (10...20) контактов из {mtc2.*, mtc4.*}. Cо стороны mobile, проверить получения нотификации о добавлении (необходимо понять работает ли это)."/>
+  <loop times="200">
+  <try>
+      <switch var="random(1, 23)">
+    <case var=" 1"/><add-contact-list-item  dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><add-contact-list-item  dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><add-contact-list-item  dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><add-contact-list-item  dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><add-contact-list-item  dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><add-contact-list-item  dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><add-contact-list-item  dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><add-contact-list-item  dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><add-contact-list-item  dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><add-contact-list-item dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><add-contact-list-item dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><add-contact-list-item dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><add-contact-list-item dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><add-contact-list-item dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><add-contact-list-item dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><add-contact-list-item dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><add-contact-list-item dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><add-contact-list-item dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><add-contact-list-item dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><add-contact-list-item dst-login-id="mtc4.20"/><break/>
+
+    <case var="21"/><add-contact-list-item dst-login-id="mtc2.1auth"/><break/>
+    <case var="22"/><add-contact-list-item dst-login-id="mtc2.2auth"/><break/>
+    <case var="23"/><add-contact-list-item dst-login-id="mtc2.3auth"/><break/>
+      </switch>
+  <catch/>
+  </try>
+  <try>
+      <switch var="random(1, 23)">
+    <case var=" 1"/><remove-contact-list-item  dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><remove-contact-list-item  dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><remove-contact-list-item  dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><remove-contact-list-item  dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><remove-contact-list-item  dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><remove-contact-list-item  dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><remove-contact-list-item  dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><remove-contact-list-item  dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><remove-contact-list-item  dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><remove-contact-list-item dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><remove-contact-list-item dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><remove-contact-list-item dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><remove-contact-list-item dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><remove-contact-list-item dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><remove-contact-list-item dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><remove-contact-list-item dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><remove-contact-list-item dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><remove-contact-list-item dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><remove-contact-list-item dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><remove-contact-list-item dst-login-id="mtc4.20"/><break/>
+
+    <case var="21"/><remove-contact-list-item dst-login-id="mtc2.1auth"/><break/>
+    <case var="22"/><remove-contact-list-item dst-login-id="mtc2.2auth"/><break/>
+    <case var="23"/><remove-contact-list-item dst-login-id="mtc2.3auth"/><break/>
+      </switch>
+  <catch/>
+  </try>
+        </loop>
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before add2"/>
+
+        <log msg="### ·  Добавить все mtc1.* в контакт листы всех mtc1.*."/>
+
+  <try>
+        <add-contact-list-item dst-login-id="mtc1.1"/>
+  <catch/>
+  </try>
+  <try>
+        <add-contact-list-item dst-login-id="mtc1.2"/>
+  <catch/>
+  </try>
+  <try>
+        <add-contact-list-item dst-login-id="mtc1.3"/>
+  <catch/>
+  </try>
+  <try>
+        <add-contact-list-item dst-login-id="mtc1.4"/>
+  <catch/>
+  </try>
+  <try>
+        <add-contact-list-item dst-login-id="mtc1.5"/>
+  <catch/>
+  </try>
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before random status switching"/>
+
+        <log msg="### ·  В цикле 500 раз mtc1.* должны случайно переключать статусы.  В логах (как на стороне mtc1.*, так и на стороне Mobile) должно отображаться изменение статусов."/>
+
+  <loop times="500">
+  <try>
+          <set-status status="random-online-busy"/>
+  <catch/>
+  </try>
+        </loop>
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before 222"/>
+
+        <log msg="### 2.2.2 Отправка сообщений"/>
+        <log msg="### ·  В цикле 100 раз mtc1.* должны отправлять сообщения пользователю, случайно выбранному из {mtc3.* }. Сообщения должны приходить в том порядке, в котором они были посланы."/>
+
+  <loop times="100">
+                <loop times="random(0,1)">
+      <try>
+      <send-msg to="mtc3.1">
+              message to native mtc3.1
+            </send-msg>
+      <catch/>
+      </try>
+    </loop>
+                <loop times="random(0,1)">
+      <try>
+      <send-msg to="mtc3.2">
+              message to native mtc3.2
+            </send-msg>
+      <catch/>
+      </try>
+    </loop>
+                <loop times="random(0,1)">
+      <try>
+      <send-msg to="mtc3.3">
+              message to native mtc3.3
+            </send-msg>
+      <catch/>
+      </try>
+    </loop>
+        </loop>
+
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before 500/2"/>
+
+        <log msg="### (this step will be performed at the end of test script) ·  В цикле 500 раз mtc1.1 должен отправлять сообщения с номером сообщения пользователю, случайно выбранному из {mtc2.1auth, …, mtc2.3auth}.  Сообщения должны приходить в том порядке, в котором они были посланы."/>
+
+        <log msg="### ·  В цикле 500 раз mtc1.* должны отправлять сообщения с номером сообщения пользователю, случайно выбранному из {mtc2.*}. Сообщения должны приходить в том порядке, в котором они были посланы."/>
+
+  <loop times="500">
+    <try>
+    <switch var="random(1,3)">
+      <case var="1"/><send-msg to="mtc2.1auth">message abc</send-msg><break/>
+      <case var="2"/><send-msg to="mtc2.2auth">message abc</send-msg><break/>
+      <case var="3"/><send-msg to="mtc2.3auth">message abc</send-msg><break/>
+    </switch>
+    <catch/>
+    </try>
+        </loop>
+
+  <log msg="### 1.1.1 Запрос контактной информации - will be performed at the end of test script"/>
+  <log msg="### 1.1.2 Отправка контактной информации - will be performed at the end of test script"/>
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before complex test"/>
+
+        <log msg="### 2.2.3 Комплексный тест"/>
+
+        <log msg="### ·  Смешать пункты 2.2.1 и 2.2.2. Вероятность добавления и удаления контактов – 10%, смены статуса – 20%, посылки сообщения – 40%. В цикле 500 раз mtc1.1, …, mtc1.5 должны отправлять сообщения с номером сообщения пользователю, случайно выбранному из {mtc2.1auth, …, mtc2.3auth}, случайно переключать статусы, добавлять в контакт лист и удалять из него случайное количество (10...20) контактов из {mtc2.*, mtc4.*}. Сообщения должны приходить в том порядке, в котором они были посланы. В логах должно отображаться изменение статусов. Cо стороны mobile, проверить получения нотификации о добавлении (необходимо понять работает ли это)."/>
+
+  <loop times="500">
+    <switch var="random(1,7)">
+      <case var="1"/>
+        <try>
+            <switch var="random(1, 23)">
+          <case var=" 1"/><add-contact-list-item  dst-login-id="mtc4.1"/><break/>
+          <case var=" 2"/><add-contact-list-item  dst-login-id="mtc4.2"/><break/>
+          <case var=" 3"/><add-contact-list-item  dst-login-id="mtc4.3"/><break/>
+          <case var=" 4"/><add-contact-list-item  dst-login-id="mtc4.4"/><break/>
+          <case var=" 5"/><add-contact-list-item  dst-login-id="mtc4.5"/><break/>
+          <case var=" 6"/><add-contact-list-item  dst-login-id="mtc4.6"/><break/>
+          <case var=" 7"/><add-contact-list-item  dst-login-id="mtc4.7"/><break/>
+          <case var=" 8"/><add-contact-list-item  dst-login-id="mtc4.8"/><break/>
+          <case var=" 9"/><add-contact-list-item  dst-login-id="mtc4.9"/><break/>
+          <case var="10"/><add-contact-list-item dst-login-id="mtc4.10"/><break/>
+          <case var="11"/><add-contact-list-item dst-login-id="mtc4.11"/><break/>
+          <case var="12"/><add-contact-list-item dst-login-id="mtc4.12"/><break/>
+          <case var="13"/><add-contact-list-item dst-login-id="mtc4.13"/><break/>
+          <case var="14"/><add-contact-list-item dst-login-id="mtc4.14"/><break/>
+          <case var="15"/><add-contact-list-item dst-login-id="mtc4.15"/><break/>
+          <case var="16"/><add-contact-list-item dst-login-id="mtc4.16"/><break/>
+          <case var="17"/><add-contact-list-item dst-login-id="mtc4.17"/><break/>
+          <case var="18"/><add-contact-list-item dst-login-id="mtc4.18"/><break/>
+          <case var="19"/><add-contact-list-item dst-login-id="mtc4.19"/><break/>
+          <case var="20"/><add-contact-list-item dst-login-id="mtc4.20"/><break/>
+
+          <case var="21"/><add-contact-list-item dst-login-id="mtc2.1auth"/><break/>
+          <case var="22"/><add-contact-list-item dst-login-id="mtc2.2auth"/><break/>
+          <case var="23"/><add-contact-list-item dst-login-id="mtc2.3auth"/><break/>
+            </switch>
+        <catch/>
+        </try>
+        <try>
+            <switch var="random(1, 23)">
+          <case var=" 1"/><remove-contact-list-item  dst-login-id="mtc4.1"/><break/>
+          <case var=" 2"/><remove-contact-list-item  dst-login-id="mtc4.2"/><break/>
+          <case var=" 3"/><remove-contact-list-item  dst-login-id="mtc4.3"/><break/>
+          <case var=" 4"/><remove-contact-list-item  dst-login-id="mtc4.4"/><break/>
+          <case var=" 5"/><remove-contact-list-item  dst-login-id="mtc4.5"/><break/>
+          <case var=" 6"/><remove-contact-list-item  dst-login-id="mtc4.6"/><break/>
+          <case var=" 7"/><remove-contact-list-item  dst-login-id="mtc4.7"/><break/>
+          <case var=" 8"/><remove-contact-list-item  dst-login-id="mtc4.8"/><break/>
+          <case var=" 9"/><remove-contact-list-item  dst-login-id="mtc4.9"/><break/>
+          <case var="10"/><remove-contact-list-item dst-login-id="mtc4.10"/><break/>
+          <case var="11"/><remove-contact-list-item dst-login-id="mtc4.11"/><break/>
+          <case var="12"/><remove-contact-list-item dst-login-id="mtc4.12"/><break/>
+          <case var="13"/><remove-contact-list-item dst-login-id="mtc4.13"/><break/>
+          <case var="14"/><remove-contact-list-item dst-login-id="mtc4.14"/><break/>
+          <case var="15"/><remove-contact-list-item dst-login-id="mtc4.15"/><break/>
+          <case var="16"/><remove-contact-list-item dst-login-id="mtc4.16"/><break/>
+          <case var="17"/><remove-contact-list-item dst-login-id="mtc4.17"/><break/>
+          <case var="18"/><remove-contact-list-item dst-login-id="mtc4.18"/><break/>
+          <case var="19"/><remove-contact-list-item dst-login-id="mtc4.19"/><break/>
+          <case var="20"/><remove-contact-list-item dst-login-id="mtc4.20"/><break/>
+
+          <case var="21"/><remove-contact-list-item dst-login-id="mtc2.1auth"/><break/>
+          <case var="22"/><remove-contact-list-item dst-login-id="mtc2.2auth"/><break/>
+          <case var="23"/><remove-contact-list-item dst-login-id="mtc2.3auth"/><break/>
+            </switch>
+        <catch/>
+        </try>
+        <break/>
+      <case var="2"/>
+      <case var="3"/>
+        <try>
+              <set-status status="random-online-busy"/>
+        <catch/>
+        </try>
+        <break/>
+      <case var="4"/>
+      <case var="5"/>
+      <case var="6"/>
+      <case var="7"/>
+        <try>
+            <switch var="random(1,3)">
+          <case var="1"/><send-msg to="mtc2.1auth">message complex test</send-msg><break/>
+          <case var="2"/><send-msg to="mtc2.2auth">message complex test</send-msg><break/>
+          <case var="3"/><send-msg to="mtc2.3auth">message complex test</send-msg><break/>
+            </switch>
+        <catch/>
+        </try>
+        <break/>
+          </switch>
+        </loop>
+
+        <thread-meeting
+    barrier-participants-count="5"
+    meeting-id="before logout"/>
+
+        <log msg="### ·  Всех logout."/>
+  <try>
+  <logout/>
+  <catch/>
+  </try>
+
+        <thread-meeting
+    barrier-participants-count="6"
+    meeting-id="additional-test"/>
+
+        <thread-meeting
+    barrier-participants-count="16"
+    meeting-id="before-end"/>
+        <log msg="### STRESS TEST COMPLETE."/>
+  </behavior>
+
+
+  <behavior id="additional-test">
+        <thread-meeting
+    barrier-participants-count="6"
+    meeting-id="additional-test"/>
+  <try>
+  <login/>
+  <catch/>
+  </try>
+
+        <log msg="### ·  В цикле 500 раз mtc1.1 должен отправлять сообщения с номером сообщения пользователю, случайно выбранному из {mtc2.1auth, …, mtc2.3auth}.  Сообщения должны приходить в том порядке, в котором они были посланы."/>
+
+  <loop times="500">
+    <try>
+    <switch var="random(1,3)">
+      <case var="1"/><send-msg to="mtc2.1auth">additional-test message to mobile</send-msg><break/>
+      <case var="2"/><send-msg to="mtc2.2auth">additional-test message to mobile</send-msg><break/>
+      <case var="3"/><send-msg to="mtc2.3auth">additional-test message to mobile</send-msg><break/>
+    </switch>
+    <catch/>
+    </try>
+        </loop>
+  <try>
+          <logout/>
+  <catch/>
+  </try>
+
+  <!-- meet "additional-test-2-behavior-1" threads -->
+        <thread-meeting
+    barrier-participants-count="3"
+    meeting-id="before-additional-test-2-behavior-1"/>
+
+        <thread-meeting
+    barrier-participants-count="16"
+    meeting-id="before-end"/>
+        <log msg="### STRESS TEST COMPLETE."/>
+  </behavior>
+
+
+  <behavior id="additional-test-2-behavior-1">  <!-- 2 threads -->
+        <thread-meeting
+    barrier-participants-count="3"
+    meeting-id="before-additional-test-2-behavior-1"/>
+  <try>
+        <login/>
+  <catch/>
+  </try>
+        <thread-meeting
+    barrier-participants-count="2"
+    meeting-id="after-additional-test-2-login"/>
+
+  <log msg="### 1.1.1 Запрос контактной информации"/>
+  <log msg="### ·  В цикле 1..100 для каждого из mtc1.1/mtc1.2 запрашивать контактную информацию о случайно выбранном контакте из контакт-листа. Сервер должен присылать запрошенную контактную информацию."/>
+  <log msg="### ·  Повторить в параллельных потоках (один поток для mtc1.1, второй – для mtc1.2)."/>
+
+  <loop times="100">
+    <try>
+      <switch var="random(1,20)">
+    <case var=" 1"/><get-user-info dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><get-user-info dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><get-user-info dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><get-user-info dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><get-user-info dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><get-user-info dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><get-user-info dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><get-user-info dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><get-user-info dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><get-user-info dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><get-user-info dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><get-user-info dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><get-user-info dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><get-user-info dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><get-user-info dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><get-user-info dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><get-user-info dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><get-user-info dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><get-user-info dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><get-user-info dst-login-id="mtc4.20"/><break/>
+      </switch>
+    <catch/>
+    </try>
+        </loop>
+
+
+
+
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="before-test-userinfo-multithreaded"/>
+  <log msg="### ·  Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="after-test-userinfo-multithreaded"/>
+  <log msg="### 1.1.2 Отправка контактной информации"/>
+  <log msg="### ·  В цикле 1..100 для каждого из mtc1.1/mtc1.2 посылать контактную информацию случайно выбранного контакта другому так же случайно выбранному контакту в контакт-листе."/>
+  <log msg="### ·  Повторить в параллельных потоках (один поток для mtc1.1, второй – для mtc1.2)."/>
+
+  <loop times="100">
+    <try>
+      <switch var="random(1,20)">
+    <case var=" 1"/><send-random-contact dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><send-random-contact dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><send-random-contact dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><send-random-contact dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><send-random-contact dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><send-random-contact dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><send-random-contact dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><send-random-contact dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><send-random-contact dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><send-random-contact dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><send-random-contact dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><send-random-contact dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><send-random-contact dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><send-random-contact dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><send-random-contact dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><send-random-contact dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><send-random-contact dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><send-random-contact dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><send-random-contact dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><send-random-contact dst-login-id="mtc4.20"/><break/>
+      </switch>
+    <catch/>
+    </try>
+        </loop>
+
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="before-test-sendcontacts-multithreaded"/>
+  <log msg="### · Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="after-test-sendcontacts-multithreaded"/>
+  <try>
+        <logout/>
+  <catch/>
+  </try>
+
+        <thread-meeting
+    barrier-participants-count="16"
+    meeting-id="before-end"/>
+        <log msg="### STRESS TEST COMPLETE."/>
+  </behavior>
+
+  <behavior id="additional-test-2-behavior-2">  <!-- 8 threads -->
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="before-test-userinfo-multithreaded"/>
+  <log msg="### ·  Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+  <loop times="100">
+    <try>
+      <switch var="random(1,20)">
+    <case var=" 1"/><get-user-info dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><get-user-info dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><get-user-info dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><get-user-info dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><get-user-info dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><get-user-info dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><get-user-info dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><get-user-info dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><get-user-info dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><get-user-info dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><get-user-info dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><get-user-info dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><get-user-info dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><get-user-info dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><get-user-info dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><get-user-info dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><get-user-info dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><get-user-info dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><get-user-info dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><get-user-info dst-login-id="mtc4.20"/><break/>
+      </switch>
+    <catch/>
+    </try>
+        </loop>
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="after-test-userinfo-multithreaded"/>
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="before-test-sendcontacts-multithreaded"/>
+  <log msg="### · Повторить, используя несколько (4) потоков для каждого из mtc1.1, mtc1.2."/>
+  <loop times="100">
+    <try>
+      <switch var="random(1,20)">
+    <case var=" 1"/><send-random-contact dst-login-id="mtc4.1"/><break/>
+    <case var=" 2"/><send-random-contact dst-login-id="mtc4.2"/><break/>
+    <case var=" 3"/><send-random-contact dst-login-id="mtc4.3"/><break/>
+    <case var=" 4"/><send-random-contact dst-login-id="mtc4.4"/><break/>
+    <case var=" 5"/><send-random-contact dst-login-id="mtc4.5"/><break/>
+    <case var=" 6"/><send-random-contact dst-login-id="mtc4.6"/><break/>
+    <case var=" 7"/><send-random-contact dst-login-id="mtc4.7"/><break/>
+    <case var=" 8"/><send-random-contact dst-login-id="mtc4.8"/><break/>
+    <case var=" 9"/><send-random-contact dst-login-id="mtc4.9"/><break/>
+    <case var="10"/><send-random-contact dst-login-id="mtc4.10"/><break/>
+    <case var="11"/><send-random-contact dst-login-id="mtc4.11"/><break/>
+    <case var="12"/><send-random-contact dst-login-id="mtc4.12"/><break/>
+    <case var="13"/><send-random-contact dst-login-id="mtc4.13"/><break/>
+    <case var="14"/><send-random-contact dst-login-id="mtc4.14"/><break/>
+    <case var="15"/><send-random-contact dst-login-id="mtc4.15"/><break/>
+    <case var="16"/><send-random-contact dst-login-id="mtc4.16"/><break/>
+    <case var="17"/><send-random-contact dst-login-id="mtc4.17"/><break/>
+    <case var="18"/><send-random-contact dst-login-id="mtc4.18"/><break/>
+    <case var="19"/><send-random-contact dst-login-id="mtc4.19"/><break/>
+    <case var="20"/><send-random-contact dst-login-id="mtc4.20"/><break/>
+      </switch>
+    <catch/>
+    </try>
+        </loop>
+        <thread-meeting
+    barrier-participants-count="10"
+    meeting-id="after-test-sendcontacts-multithreaded"/>
+        <thread-meeting
+    barrier-participants-count="16"
+    meeting-id="before-end"/>
+        <log msg="### STRESS TEST COMPLETE."/>
+  </behavior>
+</mns>

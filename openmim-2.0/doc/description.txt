@@ -1,0 +1,9 @@
+Several years ago, this project was used in commercial setting by a cellular service provider for an IM service. There were two clients: IM messages were delivered (1) via the SMS and (2) via the SIM card applet. These clients are not open sourced by this project, but the underlying IM connector plugin is, and it is reusable.
+
+This library supports two IM networks: ICQ and MSN.
+
+Previous early and greatly simplified version of this project is available as http://jcq2k.sf.net . The openmim project is multiprotocol, hence I chose another name for it. Simply cut, openmim project is a more developed and improved version of jcq2k.
+
+Openmim library supports asynchronous operations -- any operation can be started via the method start(Operation) and the progress of operation is reported via the listeners. The start() method returns quickly. There also is an utility method performSynchronously(Operation), which is a blocking call. There are also convinience wrapper sync and async methods for every operation, e.g. startLogin() (async) and login() (sync).
+
+Openmim is at http://sf.net/projects/openmim
