@@ -184,7 +184,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	
 	protected final synchronized boolean fire_messageArrived(String roomId, String senderId, String plainTextMessage){
 		if(kernel!=null){
-			try{kernel.messageArrived(roomId, senderId, plainTextMessage);return true;}
+			try{kernel.messageArrived(instanceId, instanceId, roomId, senderId, plainTextMessage);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
 		queue(new MessageArrivedEvent(roomId, senderId, plainTextMessage));
@@ -230,7 +230,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 
 	protected final synchronized boolean fire_agentOnline(String roomId, String senderId){
 		if(kernel!=null){
-			try{kernel.agentOnline(roomId, senderId);return true;}
+			try{kernel.agentOnline(instanceId, instanceId, roomId, senderId);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
 		queue(new AgentOnlineEvent(roomId, senderId));
@@ -238,7 +238,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	}
 	protected final synchronized boolean fire_agentBusy(String roomId, String senderId){
 		if(kernel!=null){
-			try{kernel.agentBusy(roomId, senderId);return true;}
+			try{kernel.agentBusy(instanceId, instanceId, roomId, senderId);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
 		queue(new AgentBusyEvent(roomId, senderId));
@@ -246,7 +246,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	}
 	protected final synchronized boolean fire_agentOffline(String roomId, String senderId){
 		if(kernel!=null){
-			try{kernel.agentOffline(roomId, senderId);return true;}
+			try{kernel.agentOffline(instanceId, instanceId, roomId, senderId);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
 		queue(new AgentOfflineEvent(roomId, senderId));
@@ -256,7 +256,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	 * @return */
 	protected final synchronized boolean fire_agentName(String roomId, String senderId, String nickName, String firstName, String lastName, String middleName, String realName){
 		if(kernel!=null){
-			try{kernel.agentName(roomId, senderId, nickName, firstName, lastName, middleName, realName);return true;}
+			try{kernel.agentName(instanceId, instanceId, roomId, senderId, nickName, firstName, lastName, middleName, realName);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
 		queue(new AgentNameEvent(roomId, senderId, nickName, firstName, lastName, middleName, realName));

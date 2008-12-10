@@ -4,13 +4,13 @@ import java.rmi.RemoteException;
 
 /** On startup, restores the queue from persistent storage */
 public interface ChatConnector extends Remote{
-	public static interface Listener{
-		void messageArrived(String roomId, String senderId, String plainTextMessage)throws RemoteException;
-		void agentOnline(String roomId, String senderId)throws RemoteException;
-		void agentBusy(String roomId, String senderId)throws RemoteException;
-		void agentOffline(String roomId, String senderId)throws RemoteException;
+	public static interface Listener extends Remote{
+		void messageArrived(String connectorId, String networkId, String roomId, String senderId, String plainTextMessage)throws RemoteException;
+		void agentOnline(String connectorId, String networkId, String roomId, String senderId)throws RemoteException;
+		void agentBusy(String connectorId, String networkId, String roomId, String senderId)throws RemoteException;
+		void agentOffline(String connectorId, String networkId, String roomId, String senderId)throws RemoteException;
 		/** Unknown parameters should be set to null.*/
-		void agentName(String roomId, String senderId, String nickName, String firstName, String lastName, String middleName, String realName)throws RemoteException;
+		void agentName(String connectorId, String networkId, String roomId, String senderId, String nickName, String firstName, String lastName, String middleName, String realName)throws RemoteException;
 	}
 	
 	void sendMessage(String roomId, String recipientId, String plaintext)throws RemoteException;
