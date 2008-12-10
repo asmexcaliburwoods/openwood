@@ -76,7 +76,7 @@ public class XMPPChatConnector extends AbstractChatConnector {
 			            body=subject+"\n"+body;
 			            body=body.trim();
 			            LOG.debug("MESSAGE_ARRIVED: "+from+": "+body);
-			            fire_messageArrived(null, from, body);
+			            fire_messageArrived(null,null, from, body);
 			        }
 			    };
 			// Register the listener.
@@ -117,17 +117,17 @@ public class XMPPChatConnector extends AbstractChatConnector {
 	}
 
 	@Override
-	public void joinRoom(String roomId) throws RemoteException {
+	public void joinRoom(String networkId, String roomId) throws RemoteException {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void leaveRoom(String roomId) throws RemoteException {
+	public void leaveRoom(String networkId, String roomId) throws RemoteException {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void sendMessage(String roomId, String recipientId, String plaintext)
+	public void sendMessage(String networkId, String roomId, String recipientId, String plaintext)
 			throws RemoteException {
 		synchronized (loginId2Chat) {
 			Chat chat=loginId2Chat.get(recipientId);

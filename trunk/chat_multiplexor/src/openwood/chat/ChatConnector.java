@@ -13,9 +13,9 @@ public interface ChatConnector extends Remote{
 		void agentName(String connectorId, String networkId, String roomId, String senderId, String nickName, String firstName, String lastName, String middleName, String realName)throws RemoteException;
 	}
 	
-	void sendMessage(String roomId, String recipientId, String plaintext)throws RemoteException;
-	void joinRoom(String roomId)throws RemoteException;
-	void leaveRoom(String roomId)throws RemoteException;
+	void sendMessage(String networkId, String roomId, String recipientId, String plaintext)throws RemoteException;
+	void joinRoom(String networkId, String roomId)throws RemoteException;
+	void leaveRoom(String networkId, String roomId)throws RemoteException;
 	
 	/** sets bot's status to Online, on connect, it is DND/busy */
 	void kernelStarted(Listener listener)throws RemoteException;

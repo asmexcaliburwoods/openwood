@@ -71,6 +71,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	@Override
 	public final synchronized void kernelStarted(Listener listener) throws RemoteException {
 		this.kernel=listener;
+		new Thread(new Runnable(){public void run(){try{
 		try {
 			setOnline();
 		} catch (Throwable e) {
@@ -82,6 +83,10 @@ public abstract class AbstractChatConnector implements ChatConnector {
 		} catch (Throwable e) {
 			LOG.error("",e);
 		}
+		}catch(Throwable tr){
+			LOG.error("",tr);
+		}
+		}}, "kernelStarted event").start();
 	}
 
 	protected abstract void setOnline() throws Throwable;
@@ -91,7 +96,7 @@ public abstract class AbstractChatConnector implements ChatConnector {
 			Event e=queue.remove(0);
 			if(e instanceof MessageArrivedEvent){
 				MessageArrivedEvent e_=(MessageArrivedEvent) e;
-				if(!fire_messageArrived(e_.roomId, e_.senderId, e_.plainTextMessage))break;
+				if(!fire_messageArrived(e_.networkId, e_.roomId, e_.senderId, e_.plainTextMessage))break;
 			}else
 				if(e instanceof AgentOnlineEvent){
 					AgentOnlineEvent e_=(AgentOnlineEvent) e;
@@ -120,11 +125,15 @@ public abstract class AbstractChatConnector implements ChatConnector {
 	}
 	private static class MessageArrivedEvent extends Event{
 		private static final long serialVersionUID = 2341634361375305108L;
+		String networkId;
 		String roomId;
 		String senderId;
 		String plainTextMessage;
-		public MessageArrivedEvent(String roomId,
+		public MessageArrivedEvent(
+				String networkId, 
+				String roomId,
 				String senderId, String plainTextMessage) {
+			this.networkId=networkId;
 			this.plainTextMessage = plainTextMessage;
 			this.roomId = roomId;
 			this.senderId = senderId;
@@ -182,19 +191,19 @@ public abstract class AbstractChatConnector implements ChatConnector {
 		
 	}
 	
-	protected final synchronized boolean fire_messageArrived(String roomId, String senderId, String plainTextMessage){
+	protected final synchronized boolean fire_messageArrived(String networkId, String roomId, String senderId, String plainTextMessage){
 		if(kernel!=null){
-			try{kernel.messageArrived(instanceId, instanceId, roomId, senderId, plainTextMessage);return true;}
+			try{kernel.messageArrived(instanceId, networkId, roomId, senderId, plainTextMessage);return true;}
 			catch(RemoteException e){kernelRestartingLocal();LOG.warn("will re-send",e);}
 		}
-		queue(new MessageArrivedEvent(roomId, senderId, plainTextMessage));
-		respondKernelRestarting(roomId,senderId);
+		queue(new MessageArrivedEvent(networkId, roomId, senderId, plainTextMessage));
+		respondKernelRestarting(networkId, roomId, senderId);
 		return false;
 	}
 	
-	private void respondKernelRestarting(String roomId, String senderId) {
+	private void respondKernelRestarting(String networkId, String roomId, String senderId) {
 		try {
-			sendMessage(roomId, senderId, "Kernel restarts. Your message is queued and will be processed later.");
+			sendMessage(networkId, roomId, senderId, properties.getProperty("kernel.restarts.message"));
 		} catch (RemoteException e) {
 			LOG.error("while respondKernelRestarting",e.getCause());
 		}
