@@ -85,9 +85,9 @@ public class ChatConnectorLauncher {
 	protected static void consoleShutdownPrompt()throws Throwable{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		while(true){
+			System.out.print("\nCommands: stop -- shuts down the system\nCOMMAND: ");
 			String line=br.readLine();
 			if(line.equalsIgnoreCase("stop")){System.out.println("SHUTTING DOWN");shutdown();System.out.println("OK");System.exit(0);}
-			System.out.print("\nCommands: stop\nCOMMAND: ");
 		}
 	}
 
