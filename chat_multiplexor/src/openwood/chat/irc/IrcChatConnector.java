@@ -6,8 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.Map.Entry;
 
 import openwood.chat.impl.AbstractChatConnector;
 
@@ -114,7 +112,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 	}
 	
 	public void joinChannels(IMNetwork net) {
-		String[] channels=properties.getProperty("auto.network."+net.getKey()+".channel").split(",");
+		String[] channels=properties.getProperty("channels").split(",");
 		for(String ch:channels){
 			ChannelContactBean leaf=new ChannelContactBean();
 			leaf.setNetworkKey(net.getKey());
@@ -152,35 +150,20 @@ public class IrcChatConnector extends AbstractChatConnector {
 		g.setRealNameForIRCUsed(true);
 		cb.setGlobalParameters(g);
 		List<IMNetworkBean> networksConfigured=new ArrayList<IMNetworkBean>();
-		for(Entry<Object,Object> e:properties.entrySet()){
-			String k=(String) e.getKey();
-			k=k.trim();
-			String v=(String) e.getValue();
-			if(k.equals("network")){
-				k=instanceId;
-				String netName=k.toLowerCase();
-				StringTokenizer st=new StringTokenizer(v,",;");
-				while(st.hasMoreTokens()){
-					String[] kv=st.nextToken().split("=");
-					properties.setProperty("auto.network."+netName+"."+(kv[0].trim()), kv[1].trim());
-				}
-				String hostPort=properties.getProperty("auto.network."+netName+".hostport");
-				String[] hps=hostPort.split(":");
-				String host=hps[0].trim();
-				String portStr=hps.length>1?hps[1].trim():"6667";
-				int port=Integer.parseInt(portStr);
-				IRCServerBean sb=new IRCServerBean();
-				sb.setHostName(host);
-				sb.setPort(port);
-				IRCNetworkBean imNetwork=new IRCNetworkBean();
-				imNetwork.setKey(netName);
-				imNetwork.setType(IMNetwork.Type.irc);
-				sb.setImNetwork(imNetwork);
-				networksConfigured.add(imNetwork);
-				imNetwork.setServers(Collections.singletonList((ServerBean)sb));
-				break;//only single instance of IMNET per IrcChatConnector
-			}
-		}
+		String hostPort=properties.getProperty("hostport");
+		String[] hps=hostPort.split(":");
+		String host=hps[0].trim();
+		String portStr=hps.length>1?hps[1].trim():"6667";
+		int port=Integer.parseInt(portStr);
+		IRCServerBean sb=new IRCServerBean();
+		sb.setHostName(host);
+		sb.setPort(port);
+		IRCNetworkBean imNetwork=new IRCNetworkBean();
+		imNetwork.setKey(instanceId);
+		imNetwork.setType(IMNetwork.Type.irc);
+		sb.setImNetwork(imNetwork);
+		networksConfigured.add(imNetwork);
+		imNetwork.setServers(Collections.singletonList((ServerBean)sb));
 //		cb.setNetworkKeyCanonical2ListOfServersToKeepConnectionWith(servmap);
 		cb.setNetworksConfigured(networksConfigured);
 		List<RoleToDisplayBean> rolesToDisplay=new ArrayList<RoleToDisplayBean>();
