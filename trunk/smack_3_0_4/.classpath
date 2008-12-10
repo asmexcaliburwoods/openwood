@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="source"/>
-	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="src" path="test-unit"/>
-	<classpathentry kind="lib" path="build/ant-contrib.jar"/>
 	<classpathentry kind="lib" path="build/build/xmlunit.jar"/>
-	<classpathentry kind="lib" path="build/junit.jar"/>
 	<classpathentry kind="lib" path="build/merge/jzlib.jar"/>
 	<classpathentry kind="lib" path="build/merge/xpp.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/commons-logging-1.1.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/commons-logging-adapters-1.1.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/commons-logging-api-1.1.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/jmf.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/jspeex-0.9.7-jfcom.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/junit.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/mac/0JavaSoundStream.fix.mac.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/mac/0jmf.mac.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/lib/Speex.jar"/>
-	<classpathentry kind="lib" path="jingle/extension/build/merge/jstun.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
