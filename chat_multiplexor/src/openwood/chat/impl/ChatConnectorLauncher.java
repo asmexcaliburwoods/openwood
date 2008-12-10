@@ -122,6 +122,7 @@ public class ChatConnectorLauncher {
 	protected static void startConnector(String id, Properties p) throws Throwable {
 		LOG.info("Connector '"+id+"' starting");
 		Properties secondaryProp=new Properties();
+		secondaryProp.put("kernel.restarts.message",p.get("kernel.restarts.message"));
 		for(Entry<Object, Object> e:p.entrySet()){
 			if(!(e.getKey() instanceof String))continue;
 			String k=(String) e.getKey();

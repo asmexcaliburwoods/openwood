@@ -64,7 +64,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 			if(!isprivate)if(!text.toLowerCase().startsWith(botNick.toLowerCase()))return;
 			text=(text.toLowerCase().startsWith(botNick.toLowerCase()))?text.substring(botNick.length()).trim():text;
 			if(text.startsWith(":")||text.startsWith(","))text=text.substring(1).trim();
-			fire_messageArrived(isprivate?null:room.toString(), 
+			fire_messageArrived(net.getKey(),isprivate?null:room.toString(), 
 					nickFrom, text);
 		}
 
@@ -176,7 +176,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 	}
 
 	@Override
-	public void joinRoom(String ch) throws RemoteException {
+	public void joinRoom(String networkId, String ch) throws RemoteException {
 		ChannelContactBean leaf=new ChannelContactBean();
 		leaf.setNetworkKey(instanceId);
 		leaf.setLoginId(ch);
@@ -190,12 +190,12 @@ public class IrcChatConnector extends AbstractChatConnector {
 	}
 
 	@Override
-	public void leaveRoom(String roomId) throws RemoteException {
+	public void leaveRoom(String networkId, String roomId) throws RemoteException {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void sendMessage(String roomId, String recipientId, String plaintext)
+	public void sendMessage(String networkId, String roomId, String recipientId, String plaintext)
 			throws RemoteException {
 		try {
 			kernel.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).

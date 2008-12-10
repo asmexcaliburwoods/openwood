@@ -8,7 +8,11 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
@@ -20,13 +24,19 @@ import org.apache.commons.logging.LogFactory;
 
 public class ChatMultiplexorLink {
 	private static final Log LOG=LogFactory.getLog(ChatMultiplexorLink.class);
-	public ChatMultiplexorLink(String propFileName, Listener listener)throws Throwable{
-			Properties p=new Properties();
+	public ChatMultiplexorLink(String propFileName, final Listener listener)throws Throwable{
+			final Properties p=new Properties();
 			FileInputStream fis=null;
 			try{
 				fis=new FileInputStream(propFileName);
 				p.load(new BufferedInputStream(fis,64*1024));
-				startAll(p, listener);
+				new Thread(new Runnable(){public void run(){
+					try{
+						startAll(p, listener);
+					}catch(Throwable tr){
+						LOG.error("",tr);
+					}
+				}}).start();
 			}finally{
 				if(fis!=null)try{fis.close();}catch(IOException e){LOG.error("",e);}
 			}
@@ -37,35 +47,62 @@ public class ChatMultiplexorLink {
 		registry=LocateRegistry.getRegistry(host,port);
 	}
 	private Registry registry;
+	private Collection<ChatConnector> connectors;
 	private void startAll(final Properties p, Listener lis) throws Exception {
 		LOG.info("Looking up RMI registry");
 		lookupRMIRegistry(p);
 		LOG.info("RMI registry found.");
-		Listener listener=(Listener) UnicastRemoteObject.exportObject(lis);
+		final Listener listener=(Listener) UnicastRemoteObject.exportObject(lis);
 		String connectors=p.getProperty("connector.ids.comma.delimited");
 		if(connectors==null||connectors.trim().isEmpty())
 			throw new Exception("connector.ids.comma.delimited is not specified");
 		StringTokenizer st=new StringTokenizer(connectors,", \t\r\n;");
 		while(st.hasMoreTokens()){
-			final String id=st.nextToken();
+			final String id=st.nextToken().toLowerCase();
 			try{
-				ChatConnector cc=(ChatConnector) registry.lookup(id);
-				cc.kernelStarted(listener);
-				ccs.add(cc);
+				final ChatConnector cc=(ChatConnector) registry.lookup(id);
+				new Thread(new Runnable(){public void run(){try{
+					cc.kernelStarted(listener);
+				}catch(Throwable tr){LOG.error("",tr);}}}, "kernel started event").start();
+				connectorId2connector.put(id,cc);
 			}catch(Throwable tr){
 				LOG.error("",tr);
 			}
 		}
-		LOG.info("System startup done.");
+		LOG.info("ChatMultiplexorLink startup done.");
 	}
-	private List<ChatConnector> ccs=new ArrayList<ChatConnector>();
-	public void closeConnections(){
-		for(int i=0;i<ccs.size();i++){
+	private Map<String,ChatConnector> connectorId2connector=new HashMap<String,ChatConnector>();
+	public void shutdown(){
+		Iterator<ChatConnector> it=connectorId2connector.values().iterator();
+		for(;it.hasNext();){
+			ChatConnector cc=it.next();
 			try{
-				ccs.get(i).kernelRestarting();
+				cc.kernelRestarting();
 			}catch(Throwable tr){
 				LOG.error("",tr);
 			}
 		}
+	}
+	
+	public void joinRoom(String connectorId, String networkId, String roomId)
+			throws RemoteException {
+		ChatConnector connector=lookup(connectorId);
+		LOG.debug("JOINING ROOM: "+roomId+(networkId==null?"":"@"+networkId)+"@"+connectorId);
+		connector.joinRoom(networkId, roomId);
+	}
+	private ChatConnector lookup(String connectorId) {
+		return connectorId2connector.get(connectorId);
+	}
+	public void leaveRoom(String connectorId, String networkId, String roomId)
+			throws RemoteException {
+		ChatConnector connector=lookup(connectorId);
+		LOG.debug("LEAVING ROOM: "+roomId+(networkId==null?"":"@"+networkId)+"@"+connectorId);
+		connector.leaveRoom(networkId, roomId);
+	}
+	public void sendMessage(String connectorId, String networkId, String roomId,
+			String recipientId, String plaintext) throws RemoteException {
+		ChatConnector connector=lookup(connectorId);
+		LOG.debug("SENDING RESPONSE: "+plaintext+" to "+recipientId);
+		connector.sendMessage(networkId, roomId, recipientId, plaintext);
 	}
 }
