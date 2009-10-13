@@ -1,5 +1,6 @@
 #summary Short summary of SVN repository contents.
 
+= REFACTORING PENDING =
 == Summary ==
 
  * https://openwood.googlecode.com/svn/trunk/chat_multiplexor - Connectors to ICQ, IRC, XMPP/Google Talk;
