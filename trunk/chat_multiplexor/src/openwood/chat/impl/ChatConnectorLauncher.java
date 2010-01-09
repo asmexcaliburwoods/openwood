@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -146,5 +147,9 @@ public class ChatConnectorLauncher {
 	private static void registerWithRegistry(String id, ChatConnector connector) 
 		throws AccessException, RemoteException {
 		registry.rebind(id, UnicastRemoteObject.exportObject(connector));
+	}
+	
+	public static Map<String,ChatConnector> getConnectors(){
+		return Collections.unmodifiableMap(connectors);
 	}
 }
