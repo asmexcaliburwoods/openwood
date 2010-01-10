@@ -92,6 +92,7 @@ public class IcqChatConnector extends AbstractChatConnector {
 				String originalSrcLoginId, String originalDstLoginId,
 				UserDetails userDetails) {
 			if(userDetails==null)return;
+			if(originalSrcLoginId.equals(originalDstLoginId))return;
 			fire_agentName(null, originalDstLoginId, 
 					userDetails.getNick(), 
 					null, null, null, userDetails.getRealName());
@@ -100,6 +101,7 @@ public class IcqChatConnector extends AbstractChatConnector {
 		@Override
 		public void messageReceived(byte networkId, String senderLoginId,
 				String recipientLoginId, String text) {
+			if(senderLoginId.equals(recipientLoginId))return;
 			fire_messageArrived(null, null, senderLoginId, text);
 		}
 
@@ -127,6 +129,7 @@ public class IcqChatConnector extends AbstractChatConnector {
 		public void statusChanged(byte networkId, String srcLoginId,
 				String dstLoginId, int status, int reasonLogger,
 				String reasonMessage, int endUserReasonCode) {
+			if(srcLoginId.equals(dstLoginId))return;
 			switch(status){
 			case MessagingNetwork.STATUS_ONLINE:
 				fire_agentOnline(null, srcLoginId);

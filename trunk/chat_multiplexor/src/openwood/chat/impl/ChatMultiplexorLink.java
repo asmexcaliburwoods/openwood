@@ -9,6 +9,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -61,9 +62,11 @@ public class ChatMultiplexorLink {
 			final String id=st.nextToken().toLowerCase();
 			try{
 				final ChatConnector cc=(ChatConnector) registry.lookup(id);
+				LOG.info("Emitting kernelStarted message to "+id);
 				new Thread(new Runnable(){public void run(){try{
 					cc.kernelStarted(listener);
-				}catch(Throwable tr){LOG.error("",tr);}}}, "kernel started event").start();
+					LOG.info(id+" kernelStarted done.");
+				}catch(Throwable tr){LOG.error("",tr);}}}, "kernel started event for "+id).start();
 				connectorId2connector.put(id,cc);
 			}catch(Throwable tr){
 				LOG.error("",tr);
@@ -90,8 +93,11 @@ public class ChatMultiplexorLink {
 		LOG.debug("JOINING ROOM: "+roomId+(networkId==null?"":"@"+networkId)+"@"+connectorId);
 		connector.joinRoom(networkId, roomId);
 	}
-	private ChatConnector lookup(String connectorId) {
+	public ChatConnector lookup(String connectorId) {
 		return connectorId2connector.get(connectorId);
+	}
+	public Map<String,ChatConnector> getConnectorId2ConnectorMap() {
+		return Collections.unmodifiableMap(connectorId2connector);
 	}
 	public void leaveRoom(String connectorId, String networkId, String roomId)
 			throws RemoteException {
