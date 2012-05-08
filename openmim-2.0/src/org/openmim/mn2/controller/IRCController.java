@@ -15,9 +15,11 @@ public class IRCController {
     private String hostName;
     private String activeNick;
     private IRCUser myUser;
+	private final IMNetwork net;
 
     //QueryUserImpl(
-    public IRCController(String nickName, String realName, String userName, String loginPassword, MN2Factory mn2Factory) {
+    public IRCController(IMNetwork net, String nickName, String realName, String userName, String loginPassword, MN2Factory mn2Factory) {
+    	this.net=net;
         resolveLocalInetAddress();
         this.MN2Factory = mn2Factory;
         activeNick=nickName;
@@ -86,7 +88,7 @@ public class IRCController {
      * joinChannel method comment.
      */
     public IRCChannelParticipant onMeJoinedChannel(String channelName,IRCUser user) {
-        IRCChannel IRCChannel = new IRCChannelImpl(channelName, MN2Factory);
+        IRCChannel IRCChannel = new IRCChannelImpl(net, channelName, MN2Factory);
         channelNameCanonical2channel.put(channelName.toLowerCase(),IRCChannel);
         IRCChannelParticipant participant = (IRCChannelParticipant) createDefaultRole(IRCChannel,user);
         IRCChannel.addRole(participant);
@@ -109,7 +111,7 @@ public class IRCController {
         Lang.ASSERT_NOT_NULL(userFrom, "userFrom");
         final RoomParticipant my = createDefaultRole(null, getMyUser());
         final RoomParticipant his = createDefaultRole(null, userFrom);
-        Query query = new QueryImpl(my, his);
+        Query query = new QueryImpl(net, my, his);
         my.setRoom(query);
         his.setRoom(query);
         query.addRoomRole(my);

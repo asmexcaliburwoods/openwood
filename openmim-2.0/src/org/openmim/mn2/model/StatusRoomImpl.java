@@ -9,15 +9,14 @@ import java.util.Vector;
 public class StatusRoomImpl extends RoomImpl implements StatusRoom{
     private List<StatusRoomListenerInternal> statusRoomListenersInternal;
     private StatusRoomListenerExternal listenerStatusRoom;
-    private IMNetwork imNetwork;
 
     public StatusRoomImpl(IMNetwork imNetwork, Context ctx) {
-        this.imNetwork = imNetwork;
+        super(imNetwork);
         setStatusRoomListener(ctx.getStatusRoomListenerExternal());
     }
 
     public IMNetwork getIMNetwork() {
-        return imNetwork;
+        return getNetwork();
     }
 
     public void connecting() {

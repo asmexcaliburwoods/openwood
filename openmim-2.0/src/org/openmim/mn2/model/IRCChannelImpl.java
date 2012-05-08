@@ -1,5 +1,6 @@
 package org.openmim.mn2.model;
 
+import org.openmim.mn2.controller.IMNetwork;
 import org.openmim.mn2.controller.IRCChannelUtil;
 import org.openmim.mn2.controller.MN2Factory;
 import squirrel_util.Lang;
@@ -9,7 +10,8 @@ public class IRCChannelImpl extends RoomImpl implements IRCChannel {
     private String channelName;
     private String channelNameCanonical;
 
-    public IRCChannelImpl(String channelName, MN2Factory MN2Factory) {
+    public IRCChannelImpl(IMNetwork net, String channelName, MN2Factory MN2Factory) {
+    	super(net);
         Lang.ASSERT(IRCChannelUtil.isChannelName(channelName), "channelName must be must be at least one char long, and must start with '#' or '&', but it is " + StringUtil.toPrintableString(channelName));
         this.channelName = channelName;
         this.channelNameCanonical = MN2Factory.getNameConvertor().toCanonicalIRCChannelName(channelName);

@@ -1,6 +1,8 @@
 package org.openmim.mn2.controller;
 
 import org.openmim.mn2.MessagingNetwork2;
+import org.openmim.mn2.model.AbstractContactBean;
+import org.openmim.mn2.model.ConcreteContactBean;
 import org.openmim.mn2.model.ContactListLeaf;
 import org.openmim.mn2.model.IMNetworkBean;
 import org.openmim.mn2.model.Server;
@@ -27,4 +29,5 @@ public interface IMNetwork {
     void startReconnecting();
     MessagingNetwork2 getMN2();
     StatusRoom getStatusRoom();
+	void setMode(AbstractContactBean bot, String mode) throws IOException;
 }

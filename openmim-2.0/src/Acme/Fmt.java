@@ -11,9 +11,7 @@ public class Fmt
   public static final int LJ = 2;
   public static final int HX = 4;
   public static final int OC = 8;
-  private static final int WN = 16;
-
-public Fmt()
+  public Fmt()
 {
 }
 public static String doubleToString(double d)

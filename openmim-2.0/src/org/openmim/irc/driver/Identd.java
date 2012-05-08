@@ -10,6 +10,7 @@ import squirrel_util.Logger;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -82,6 +83,9 @@ public class Identd implements Runnable {
                 outputstream.close();
             }
             while (true);
+        }
+        catch (BindException exception) {
+            System.err.println("identd server cannot be bound");
         }
         catch (Exception exception) {
             Logger.printException(exception);

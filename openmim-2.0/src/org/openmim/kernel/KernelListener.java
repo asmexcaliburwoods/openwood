@@ -5,6 +5,8 @@ import org.openmim.mn2.model.Room;
 import org.openmim.mn2.model.StatusRoom;
 
 public interface KernelListener {
+	void onModeChangeForMe(String modeString);
+	
     void onGetCreateStatusRoom(StatusRoom room);
 
     void onNotice(StatusRoom room, String nick, String text);
