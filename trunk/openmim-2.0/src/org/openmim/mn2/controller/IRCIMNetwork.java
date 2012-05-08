@@ -7,6 +7,7 @@ import org.openmim.irc.regexp.IRCMask;
 import org.openmim.irc.regexp_util.IRCMaskUtil;
 import org.openmim.mn2.MessagingNetwork2;
 import org.openmim.mn2.model.*;
+
 import squirrel_util.ExpectException;
 import squirrel_util.Lang;
 import squirrel_util.Logger;
@@ -184,7 +185,7 @@ public class IRCIMNetwork implements IMNetwork {
             syncPrint("connect");
             try {
                 Lang.ASSERT(!isConnected(), "must be disconnected first");
-                sendLoginSequence();
+                sendLoginSequence(this);
                 ircProcessorThread = new Thread(createIRCProcessorThread());
                 ircProcessorThread.start();
             }
@@ -293,7 +294,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
     }
 
-    private void sendLoginSequence() throws IOException {
+    private void sendLoginSequence(IMNetwork net) throws IOException {
         String nick = server.getNickNames().get(0);
         ancientNick = nick;
         Lang.ASSERT_NOT_NULL_NOR_TRIMMED_EMPTY(nick, "nick");
@@ -301,7 +302,7 @@ public class IRCIMNetwork implements IMNetwork {
             reportStatus("Connecting...");
             //getResourceString("Connecting to") + " " + serverAddressToConnect + ":" + serverPortToConnect + "...");
 //            nicksLastOnline_nicklow2nick = new Hashtable();
-            client.init(server.getHostNameRedirD(), server.getHostNameRealServer(),
+            client.init(net, server.getHostNameRedirD(), server.getHostNameRealServer(),
                     server.getRedirdPort(), nick, server.getIdentdUserName(),
                     server.getPassword(), server.getRealName(),
                     new FilteringIRCListener(new AppletIRCListener(), getIgnoreList()),
@@ -387,7 +388,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         public void handleModeChangeRaw(String senderSpecification, String s, String s1, Vector vector) {
-            imListener.modeChangeRaw(IRCIMNetwork.this, senderSpecification, s, s1, vector);
+            imListener.modeChangeRaw(IRCIMNetwork.this, senderSpecification, s, s1, vector, getActiveNick());
         }
 
         /**
@@ -834,7 +835,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
+         * 
          * Creation date: (04.11.00 08:03:41)
          *
          * @return boolean
@@ -890,7 +891,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
+         * 
          * Creation date: (04.11.00 08:03:41)
          *
          * @param newEnabled boolean
@@ -923,62 +924,62 @@ public class IRCIMNetwork implements IMNetwork {
     public static interface NotifyListItem {
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          */
         Object clone();
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return org.openmim.irc.regexp.IRCMask
          */
         org.openmim.irc.regexp.IRCMask getIrcMask();
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:47:22)
+         * 
+         * Creation date: (22 пїЅпїЅпїЅ 2000 20:47:22)
          *
          * @return java.lang.String
          */
         String getNote();
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:46:48)
+         * 
+         * Creation date: (22 пїЅпїЅпїЅ 2000 20:46:48)
          *
          * @return java.lang.String
          */
         String getUserMask();
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:47:22)
+         * 
+         * Creation date: (22 пїЅпїЅпїЅ 2000 20:47:22)
          *
          * @return java.lang.String
          */
         boolean isPerformWhoisNeeded();
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newNote java.lang.String
          */
         void setNote(java.lang.String newNote);
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newPerformWhoisNeeded boolean
          */
         void setPerformWhoisNeeded(boolean newPerformWhoisNeeded);
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newUserMask java.lang.String
          */
@@ -1011,7 +1012,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
+         * 
          * Creation date: (03.12.00 18:50:20)
          *
          * @return int
@@ -1021,7 +1022,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
+         * 
          * Creation date: (03.12.00 18:50:20)
          *
          * @return squirrelchat.applet.NotifyListItem
@@ -1031,7 +1032,7 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
+         * 
          * Creation date: (03.12.00 18:50:20)
          *
          * @return squirrelchat.applet.NotifyListItem
@@ -1175,8 +1176,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return java.lang.String
          */
@@ -1185,8 +1186,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return org.openmim.irc.regexp.IRCMask
          */
@@ -1195,8 +1196,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return java.lang.String
          */
@@ -1205,8 +1206,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return java.lang.String
          */
@@ -1215,8 +1216,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @return boolean
          */
@@ -1225,8 +1226,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newNote java.lang.String
          */
@@ -1236,8 +1237,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newPerformWhoisNeeded boolean
          */
@@ -1246,8 +1247,8 @@ public class IRCIMNetwork implements IMNetwork {
         }
 
         /**
-         * Insert the method's description here.
-         * Creation date: (22 окт 2000 20:54:47)
+         * 
+         * 
          *
          * @param newUserMask java.lang.String
          */
@@ -1454,8 +1455,8 @@ public class IRCIMNetwork implements IMNetwork {
     }
 
     /**
-     * Insert the method's description here.
-     * Creation date: (22 окт 2000 23:09:12)
+     * 
+     * Creation date: (22 пїЅпїЅпїЅ 2000 23:09:12)
      *
      * @return squirrelchat.applet.NotifyListEditor
      */
@@ -1665,6 +1666,10 @@ public class IRCIMNetwork implements IMNetwork {
 //            getIRCProtocol().sendNickServIdentify(s1, null);
 //        sendJoinTo(s);//todo
     }
+	@Override
+	public void setMode(AbstractContactBean bot, String mode) throws IOException {
+		getIRCProtocol().sendModeChange(bot.getLoginId(), mode, null, null);		
+	}
 
 //    public final class CommandInterpreter {
 //        public final class NotifyCommand implements Command {
@@ -1928,8 +1933,8 @@ public class IRCIMNetwork implements IMNetwork {
 //        }
 //
 //        /**
-//         * Insert the method's description here.
-//         * Creation date: (24.11.00 08:23:20)
+//         * 
+//         *
 //         *
 //         * @return squirrelchat.applet.NotifyCommand
 //         */
@@ -1941,8 +1946,8 @@ public class IRCIMNetwork implements IMNetwork {
 //        }
 //
 //        /**
-//         * Insert the method's description here.
-//         * Creation date: (24.11.00 08:23:20)
+//         * 
+//         *
 //         *
 //         * @return squirrelchat.applet.NotifyCommand
 //         */
@@ -1954,8 +1959,8 @@ public class IRCIMNetwork implements IMNetwork {
 //        }
 //
 //        /**
-//         * Insert the method's description here.
-//         * Creation date: (24.11.00 08:23:20)
+//         * 
+//         *
 //         *
 //         * @return squirrelchat.applet.NotifyCommand
 //         */

@@ -28,7 +28,7 @@ public interface IMListener {
 
     void listStart(IMNetwork net);
 
-    void modeChangeRaw(IMNetwork net,String senderSpecification, String s, String s1, Vector vector);
+    void modeChangeRaw(IMNetwork net,String senderSpecification, String s, String s1, Vector vector, String myCurrentNick);
 
 
 

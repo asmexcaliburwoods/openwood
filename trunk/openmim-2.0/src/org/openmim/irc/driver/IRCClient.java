@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import org.openmim.mn2.controller.IMNetwork;
 import org.openmim.mn2.controller.IRCController;
 import org.openmim.mn2.controller.MN2Factory;
 
@@ -52,7 +53,7 @@ public class IRCClient extends IRCProtocol {
             return socket1.getLocalAddress();
     }
 
-    public void init(String redirdHost, String realIrcServerHostName, int redirdPort, String nickName, String userName, String loginPassword, String realName, IRCListener irclistener, MN2Factory MN2Factory) //
+    public void init(IMNetwork net,String redirdHost, String realIrcServerHostName, int redirdPort, String nickName, String userName, String loginPassword, String realName, IRCListener irclistener, MN2Factory MN2Factory) //
             throws IOException {
         Lang.ASSERT_NOT_NULL(redirdHost, "redirdHost");
         Lang.ASSERT_NOT_NULL_NOR_TRIMMED_EMPTY(loginPassword, "loginPassword");
@@ -84,6 +85,6 @@ public class IRCClient extends IRCProtocol {
         irclistener.registering();
         register(loginPassword, nickName, userName, realIrcServerHostName, realIrcServerHostName, realName);
         irclistener.connected();
-        queryClient = new IRCController(nickName, realName, userName, loginPassword, MN2Factory);
+        queryClient = new IRCController(net, nickName, realName, userName, loginPassword, MN2Factory);
     }
 }

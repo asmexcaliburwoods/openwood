@@ -26,39 +26,52 @@ public class IMListenerImpl implements IMListener {
     }
 
     public void serverReplyBanListItem(IMNetwork net,String s, String s1) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void serverReplyBanListStart(IMNetwork net) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void isonReply(IMNetwork net,String serverAddr, String[] nicksOnline) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void listEnd(IMNetwork net) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void listItem(IMNetwork net,String s, int i, String s1) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void listStart(IMNetwork net) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
-    public void modeChangeRaw(IMNetwork net, String senderSpecification, String s, String s1, Vector vector) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void modeChangeRaw(IMNetwork net, String senderSpecification, String s, String s1, Vector vector, String myCurrentNick) {
+//    	sendsp: slowbot
+//    	s: slowbot
+//    	s1: +x
+    	if(s!=null&&s.equalsIgnoreCase(myCurrentNick))kl.onModeChangeForMe(s1);
+
+//        System.out.println("sendsp: "+senderSpecification);
+//        System.out.println("s: "+s);
+//        System.out.println("s1: "+s1);
+//        if(vector==null)System.out.println("vector: null");
+//        else{
+//        	System.out.println("vector: {");
+//        	for(Object o:vector){String vs=""+o;System.out.println("  vec[i]:"+vs);}
+//        	System.out.println("}");
+//        }
     }
 
     public void meParts(IMNetwork net, String s, String s2) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void whoisEnd(IMNetwork net, String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void meJoined(IMNetwork net,String channel) {
@@ -66,7 +79,7 @@ public class IMListenerImpl implements IMListener {
     }
 
     public void invalidNick(IMNetwork net, String s, String s1) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void nickChange(IMNetwork net,String s, String s1) {
@@ -74,7 +87,7 @@ public class IMListenerImpl implements IMListener {
     }
 
     public void meQueried(IMNetwork net, String roomName) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void quit(IMNetwork net, String s, String s1) {
@@ -82,15 +95,15 @@ public class IMListenerImpl implements IMListener {
     }
 
     public void cannotJoinChannel(IMNetwork net, String s1, String s2) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void onVoice(IMNetwork net, String channel) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void onDeVoice(IMNetwork net, String channel) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void unhandledCommand(String text) {
@@ -108,15 +121,15 @@ public class IMListenerImpl implements IMListener {
     }
 
     public void willBeIgnored(IMNetwork net, IRCMask mask, boolean ignored) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void channelClicked(IMNetwork net, String channelName) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void urlClicked(String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        
     }
 
     public void noSuchNickChannel(IMNetwork net, String nickOrChannel, String comment) {

@@ -5,8 +5,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.openmim.mn2.controller.IMNetwork;
+
 public class RoomImpl implements Room {
-    private Set<RoomParticipant> roomRoles = new HashSet<RoomParticipant>();
+	private final IMNetwork net;
+    public RoomImpl(IMNetwork net) {
+		this.net = net;
+	}
+
+	private Set<RoomParticipant> roomRoles = new HashSet<RoomParticipant>();
     private List<RoomListener> roomListeners =new LinkedList<RoomListener>();
 
     public void addRoomListener(RoomListener roomListener){
@@ -34,4 +41,9 @@ public class RoomImpl implements Room {
             roomListener.roomParticipantRemoved(this,roomParticipant);
         }
     }
+
+	@Override
+	public IMNetwork getNetwork() {
+		return net;
+	}
 }

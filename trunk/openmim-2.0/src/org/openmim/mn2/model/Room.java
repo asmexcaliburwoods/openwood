@@ -2,8 +2,10 @@ package org.openmim.mn2.model;
 
 import java.util.Set;
 
-public interface Room {
+import org.openmim.mn2.controller.IMNetwork;
 
+public interface Room {
+	IMNetwork getNetwork();
     Set<RoomParticipant> getRoomParticipants();
     void addRoomRole(RoomParticipant roomParticipant);
     void deleteRoomRole(RoomParticipant roomParticipant);

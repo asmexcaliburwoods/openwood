@@ -1,6 +1,5 @@
 package org.openmim.mn2.model;
 
-import java.util.Enumeration;
 import java.beans.PropertyChangeListener;
 
 public interface User
