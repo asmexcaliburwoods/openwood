@@ -1,9 +1,9 @@
 package org.openmim.icq2k;
 
 import org.openmim.icq.util.*;
-import org.openmim.icq.util.joe.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.icq.utils.*;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
 
 /**
   Utility class for conversion of integer status values between 

@@ -2,10 +2,12 @@ package org.openmim.icq2k;
 
 import java.io.*;
 import java.util.*;
-import org.openmim.icq.util.joe.*;
-import org.openmim.icq.util.joe.jsync.*;
+
+import org.openmim.icq.utils.*;
+import org.openmim.icq.utils.jsync.*;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
 
 public class OutgoingMessageQueue
 {

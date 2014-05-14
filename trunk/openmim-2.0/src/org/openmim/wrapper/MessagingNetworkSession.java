@@ -3,8 +3,9 @@ package org.openmim.wrapper;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 
 //
 public interface MessagingNetworkSession

@@ -1,14 +1,19 @@
 package org.openmim.test;
 
 import org.openmim.*;
-import org.openmim.UserDetailsImpl;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserDetailsImpl;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.icq2k.StatusUtil;
 import org.openmim.icq2k.IcqUinUtil;
 import org.openmim.icq.util.MLang;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+
 import java.util.*;
 import java.io.*;
 import java.net.*;
@@ -613,7 +618,7 @@ class PluginContext
   private final MessagingNetworkStub plugin;
   public PluginContext(MessagingNetworkStub plugin)
   {
-    if ((plugin) == null) org.openmim.icq.util.joe.Lang.ASSERT_NOT_NULL(plugin, "plugin");
+    if ((plugin) == null) org.openmim.icq.utils.Lang.ASSERT_NOT_NULL(plugin, "plugin");
     this.plugin = plugin;
   }
 

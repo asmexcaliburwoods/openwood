@@ -1,11 +1,13 @@
 package org.openmim.test;
 
 import java.util.*;
-import org.openmim.icq.util.joe.*;
+
+import org.openmim.icq.utils.*;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkAdapter;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkAdapter;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
 
 public class TestMemory
 {

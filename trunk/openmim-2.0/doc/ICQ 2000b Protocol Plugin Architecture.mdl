@@ -3548,7 +3548,7 @@
 				quid       	"3BC5823602AC"
 				documentation 	
 |* Insert the type's description here.
-| * Creation date: (20.07.2001, пятница 18:06:15)
+| * Creation date: (20.07.2001, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 18:06:15)
 | * @author:
 				
 				superclasses 	(list inheritance_relationship_list
@@ -6188,7 +6188,7 @@
 										stereotype 	""
 										language   	"Java"))
 									physical_presentations 	(list unit_reference_list))
-								    (object SubSystem "Acme"
+								    (object SubSystem "org.acme.utils"
 									quid       	"3BC582E4020C"
 									visible_modules 	(list dependency_list
 									    (object Module_Visibility_Relationship
@@ -6217,7 +6217,7 @@
 										    (object Attribute
 											tool       	"Java"
 											name       	"FileName"
-											value      	"V:\\Server\\src\\ru\\novosoft\\mim\\server\\messaging\\icq\\util\\Acme\\Fmt.java")
+											value      	"V:\\Server\\src\\ru\\novosoft\\mim\\server\\messaging\\icq\\util\\org.acme.utils\\Fmt.java")
 										    (object Attribute
 											tool       	"Java"
 											name       	"RootPath"
@@ -6230,7 +6230,7 @@
 										    (object Attribute
 											tool       	"Java"
 											name       	"FileName"
-											value      	"V:\\Server\\src\\ru\\novosoft\\mim\\server\\messaging\\icq\\util\\Acme\\Utils.java")
+											value      	"V:\\Server\\src\\ru\\novosoft\\mim\\server\\messaging\\icq\\util\\org.acme.utils\\Utils.java")
 										    (object Attribute
 											tool       	"Java"
 											name       	"RootPath"
@@ -6437,7 +6437,7 @@
 									supplier_is_subsystem 	TRUE)
 								    (object Module_Visibility_Relationship
 									quid       	"3BC582F6004F"
-									supplier   	"Component View::ru::novosoft::mim::server::messaging::icq::util::Acme"
+									supplier   	"Component View::ru::novosoft::mim::server::messaging::icq::util::org.acme.utils"
 									quidu      	"3BC582E4020C"
 									supplier_is_subsystem 	TRUE))
 								physical_models 	(list unit_reference_list
@@ -6471,7 +6471,7 @@
 										supplier_is_subsystem 	TRUE)
 									    (object Module_Visibility_Relationship
 										quid       	"3BC582F60050"
-										supplier   	"Component View::ru::novosoft::mim::server::messaging::icq::util::Acme::Utils"
+										supplier   	"Component View::ru::novosoft::mim::server::messaging::icq::util::org.acme.utils::Utils"
 										quidu      	"3BC582E5011D"
 										supplier_is_spec 	TRUE))
 									language   	"Java"))

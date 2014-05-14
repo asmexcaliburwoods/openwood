@@ -3,8 +3,9 @@ package org.openmim.icq2k;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 
 public abstract class FlapConsumer
 {

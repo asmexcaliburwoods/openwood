@@ -1,10 +1,9 @@
-package org.openmim.mn2.model;
-
-import squirrel_util.Lang;
-import squirrel_util.NetscapeTarget;
+package org.openmim.messaging_network2.model;
 
 import java.beans.PropertyChangeListener;
 import java.net.InetAddress;
+
+import com.egplab.utils.Lang;
 
 
 public class IRCUserImpl implements IRCUser {

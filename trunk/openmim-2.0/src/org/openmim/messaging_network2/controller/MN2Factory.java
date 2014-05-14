@@ -1,9 +1,7 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
-import org.openmim.mn2.model.*;
+import org.openmim.messaging_network2.model.*;
 import org.openmim.infrastructure.Context;
-import org.openmim.mn2.model.ServerBean;
-import org.openmim.mn2.model.ConfigurationBean;
 
 import java.util.List;
 

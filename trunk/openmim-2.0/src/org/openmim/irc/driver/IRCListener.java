@@ -4,8 +4,9 @@ package org.openmim.irc.driver;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import org.openmim.irc.driver.dcc.DccReceiver;
-import org.openmim.mn2.model.User;
+import org.openmim.messaging_network2.model.User;
 
 //
 public interface IRCListener

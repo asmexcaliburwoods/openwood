@@ -1,6 +1,6 @@
-package org.openmim.icq.util.joe.jsync;
+package org.openmim.icq.utils.jsync;
 
-import org.openmim.icq.util.joe.jsync.*;
+import org.openmim.icq.utils.jsync.*;
 
 //
 public class Wheel extends Queue

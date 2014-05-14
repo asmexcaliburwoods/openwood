@@ -1,6 +1,6 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
-import org.openmim.mn2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IMNetwork;
 
 import java.util.HashMap;
 import java.util.List;

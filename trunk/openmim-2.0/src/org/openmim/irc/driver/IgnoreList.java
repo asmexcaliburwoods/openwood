@@ -3,8 +3,9 @@ package org.openmim.irc.driver;
 import java.util.*;
 
 import org.openmim.irc.regexp.IRCMask;
-import org.openmim.mn2.model.User;
-import squirrel_util.Lang;
+import org.openmim.messaging_network2.model.User;
+
+import com.egplab.utils.Lang;
 
 public class IgnoreList
 {

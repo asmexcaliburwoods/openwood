@@ -4,10 +4,10 @@ package org.openmim.irc.driver;
 // Jad home page: http://www.geocities.com/SiliconValley/Bridge/8617/jad.html
 // Decompiler options: fieldsfirst splitstr
 // Source File Name:   IRCUI.java
-import squirrel_util.Lang;
-import squirrel_util.LocaleUtil;
-
 import java.util.StringTokenizer;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.LocaleUtil;
 public class IRCUI
 {
   private static java.util.ResourceBundle resourceBundle = java.util.ResourceBundle.getBundle("org.openmim.irc.driver.locale");

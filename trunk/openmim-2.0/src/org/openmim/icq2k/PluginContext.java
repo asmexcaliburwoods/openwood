@@ -2,6 +2,7 @@ package org.openmim.icq2k;
 
 import org.openmim.*;
 import org.openmim.infrastructure.scheduler.Scheduler;
+import org.openmim.stuff.AsyncOperationRegistry;
 import org.openmim.transport_simpletcp.*;
 
 /**
@@ -18,7 +19,7 @@ public final class PluginContext
 
   public PluginContext(ICQ2KMessagingNetwork plugin)
   {
-    if (plugin == null) org.openmim.icq.util.joe.Lang.ASSERT_NOT_NULL(plugin, "plugin");
+    if (plugin == null) org.openmim.icq.utils.Lang.ASSERT_NOT_NULL(plugin, "plugin");
     this.plugin = plugin;
   }
 

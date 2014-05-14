@@ -7,10 +7,11 @@ package org.openmim.irc.driver;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Vector;
+
 import org.openmim.irc.driver.dcc.*;
-import org.openmim.mn2.model.User;
-import squirrel_util.Logger;
-//import org.openmim.irc.driver.ircz.MuteListItem;
+import org.openmim.messaging_network2.model.User;
+
+import com.egplab.utils.Logger;
 
 //
 public abstract class AbstractListener implements IRCListener

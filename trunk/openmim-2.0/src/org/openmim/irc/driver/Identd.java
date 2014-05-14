@@ -5,8 +5,8 @@ package org.openmim.irc.driver;
 // Decompiler options: fieldsfirst splitstr
 // Source File Name:   Identd.java
 
-import org.openmim.exception_handler.ExceptionUtil;
-import squirrel_util.Logger;
+import com.egplab.exception_handling.ExceptionUtil;
+import com.egplab.utils.Logger;
 
 import java.io.InputStream;
 import java.io.OutputStream;

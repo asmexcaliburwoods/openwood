@@ -3,14 +3,20 @@ package org.openmim.icq2k;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import org.openmim.icq.util.joe.*;
+
+import org.openmim.icq.utils.*;
 import org.openmim.icq.util.*;
-import org.openmim.UserDetails;
-import org.openmim.UserDetailsImpl;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkAdapter;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkAdapter;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.AsyncOperation;
+import org.openmim.stuff.AsyncOperationQueue;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserDetailsImpl;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.wrapper.*;
 
 /**
@@ -1657,7 +1663,7 @@ implements  SNACFamilies,
                 server sends                   //  response to 1,0E
 
                 SERVER seq:61B7 size:92 service:01/0F ref:00000000 flags:0000
-                 45454734         _   %                                         Âà             ;¡Ùm    ;¡Ùn
+                 45454734         _   %                                         ï¿½ï¿½             ;ï¿½ï¿½m    ;ï¿½ï¿½n
                 08 34 35 34 35 34 37 33 34 00 00 00 06 00 01 00 02 00 80 00
                 0C 00 25 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
                 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1675,21 +1681,21 @@ implements  SNACFamilies,
                 //NADO WAIT HERE FOR 3/3
 
                 SERVER seq:61B9 size:18 service:03/03 ref:00000000 flags:0000
-                     X     î
+                     X     ï¿½
                 00 01 00 02 02 58 00 02 00 02 02 EE 00 03 00 02 02 00
 
 
                 //NADO WAIT HERE FOR 4/5
 
                 SERVER seq:61BA size:16 service:04/05 ref:00000000 flags:0000
-                         ç ç   è
+                         ï¿½ ï¿½   ï¿½
                 00 02 00 00 00 03 02 00 03 E7 03 E7 00 00 03 E8
 
 
                 //NADO WAIT HERE FOR 0x9/3
 
                 SERVER seq:61BB size:12 service:09/03 ref:00000000 flags:0000
-                            
+                     ï¿½     ï¿½
                 00 02 00 02 00 A0 00 01 00 02 00 A0
                 */
 
@@ -2835,7 +2841,7 @@ implements  SNACFamilies,
     //         65 2e 63 6f   6d fe 30 fe - 61 73 75 73   21 00   "e.com.0. asus!."
     //--
     //
-    //2A 02 10 B5 00 2E   *..÷ //srv snds
+    //2A 02 10 B5 00 2E   *..ï¿½ //srv snds
     //00 15 00 03 //offline msg? (flags=0 1)
     //00 01 //flags
     //00 01 00 02 //reqid
@@ -3358,7 +3364,7 @@ implements  SNACFamilies,
     /*
     CLIENT  SNAC 4/6  SNACID 0000 0036  FLAGS 0
 
-    ÷ _ N,     2222223   ;_\"   3 joxyþEvgenii/JoeþFilippovþjoe@idisys.iae.nsk.suþ1þ
+    ï¿½ _ N,     2222223   ;_\"   3 joxyï¿½Evgenii/Joeï¿½Filippovï¿½joe@idisys.iae.nsk.suï¿½1ï¿½
     B5 01 9A 1A 4E 2C 00 00
     00 04 //msgfmt
     07 32 32 32 32 32 32 33 //recipient
@@ -4783,7 +4789,7 @@ implements  SNACFamilies,
   throws MessagingNetworkException, IOException, InterruptedException
   {
     if ((nicks.length) != (loginIds.length)) Lang.ASSERT_EQUAL(nicks.length, loginIds.length, "nicks.length", "loginIds.length");
-    //4î18573674îantichî62608614îartî30832422îBabakî111326219îbenn gunî
+    //4ï¿½18573674ï¿½antichï¿½62608614ï¿½artï¿½30832422ï¿½Babakï¿½111326219ï¿½benn gunï¿½
     ByteArrayOutputStream bas = new ByteArrayOutputStream(128);
     int i = 0;
     bas.write(Integer.toString(nicks.length).getBytes());

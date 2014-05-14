@@ -1,7 +1,5 @@
 package org.openmim.icq2k;
 
-import java.util.*;
-import org.openmim.icq.util.joe.*;
 
 /**
 Simple datatype that represents a TLV (Type/Length/Value) tuple.  

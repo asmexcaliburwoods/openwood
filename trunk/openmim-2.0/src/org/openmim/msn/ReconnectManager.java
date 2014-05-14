@@ -1,9 +1,11 @@
 package org.openmim.msn;
 
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 import org.openmim.infrastructure.taskmanager.*;
+import org.openmim.stuff.Defines;
 
 public class ReconnectManager
 {

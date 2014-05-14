@@ -3,10 +3,12 @@ package org.openmim.icq2k;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 import org.openmim.infrastructure.taskmanager.*;
 import org.openmim.infrastructure.scheduler.Scheduler;
+import org.openmim.stuff.Defines;
 
 public class ReconnectManager
 {

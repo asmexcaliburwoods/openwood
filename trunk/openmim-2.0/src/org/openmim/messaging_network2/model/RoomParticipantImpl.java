@@ -1,9 +1,9 @@
-package org.openmim.mn2.model;
-
-import squirrel_util.Lang;
+package org.openmim.messaging_network2.model;
 
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+
+import com.egplab.utils.Lang;
 
 public class RoomParticipantImpl implements RoomParticipant {
     private Room room;

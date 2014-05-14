@@ -1,8 +1,11 @@
 package org.openmim.icq2k;
 
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkException;
-import org.openmim.icq.util.joe.*;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserSearchResults;
+import org.openmim.icq.utils.*;
 
 class AsyncOperations
 {

@@ -1,12 +1,18 @@
 package org.openmim.msn;
 
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.stuff.TransportChooser;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.wrapper.*;
 import org.openmim.icq.util.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+
 import java.util.*;
 
 public class MSNMessagingNetwork implements MessagingNetwork, MessagingNetworkWrappable

@@ -1,4 +1,4 @@
-package org.openmim.icq.util.joe.jsync;
+package org.openmim.icq.utils.jsync;
 
 //-< Queue.java >----------------------------------------------------*--------*
 // JSYNC                      Version 1.03       (c) 1998  GARRET    *     ?  *

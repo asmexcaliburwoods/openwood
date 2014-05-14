@@ -1,11 +1,11 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import org.openmim.mn2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IMNetwork;
 
 public class RoomImpl implements Room {
 	private final IMNetwork net;

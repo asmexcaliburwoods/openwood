@@ -1,8 +1,9 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
-import org.openmim.mn2.model.*;
-import squirrel_util.Lang;
-import squirrel_util.Logger;
+import org.openmim.messaging_network2.model.*;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
 
 import java.net.InetAddress;
 import java.util.HashMap;

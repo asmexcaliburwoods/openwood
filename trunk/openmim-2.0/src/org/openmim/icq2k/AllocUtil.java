@@ -1,6 +1,6 @@
 package org.openmim.icq2k;
 
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
 
 /**
 Utility class for safe allocation of byte arrays.

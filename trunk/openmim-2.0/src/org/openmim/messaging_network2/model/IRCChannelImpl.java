@@ -1,10 +1,11 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
-import org.openmim.mn2.controller.IMNetwork;
-import org.openmim.mn2.controller.IRCChannelUtil;
-import org.openmim.mn2.controller.MN2Factory;
-import squirrel_util.Lang;
-import squirrel_util.StringUtil;
+import org.openmim.messaging_network2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IRCChannelUtil;
+import org.openmim.messaging_network2.controller.MN2Factory;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.StringUtil;
 
 public class IRCChannelImpl extends RoomImpl implements IRCChannel {
     private String channelName;

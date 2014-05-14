@@ -1,8 +1,8 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
 import java.util.Set;
 
-import org.openmim.mn2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IMNetwork;
 
 public interface Room {
 	IMNetwork getNetwork();

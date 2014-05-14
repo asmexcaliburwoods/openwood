@@ -1,7 +1,8 @@
 package org.openmim.irc.regexp_util;
 
-import org.openmim.mn2.model.IRCUser;
-import squirrel_util.Lang;
+import org.openmim.messaging_network2.model.IRCUser;
+
+import com.egplab.utils.Lang;
 
 public class IRCMaskUtil {
 

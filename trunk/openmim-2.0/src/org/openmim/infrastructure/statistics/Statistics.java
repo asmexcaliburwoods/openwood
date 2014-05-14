@@ -2,7 +2,7 @@ package org.openmim.infrastructure.statistics;
 
 import java.util.*;
 
-import org.openmim.icq.util.joe.AutoConfig;
+import org.openmim.icq.utils.AutoConfig;
 
 public class Statistics {
     private final static boolean STATISTICS_ENABLED = true;

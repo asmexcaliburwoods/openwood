@@ -1,7 +1,7 @@
 package org.openmim.irc.driver;
 
 import org.openmim.irc.driver.dcc.DccReceiver;
-import org.openmim.mn2.model.User;
+import org.openmim.messaging_network2.model.User;
 
 import java.io.IOException;
 import java.net.InetAddress;

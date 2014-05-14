@@ -1,10 +1,18 @@
 package org.openmim.icq.util.Acme;
 
-import org.openmim.*;
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import org.openmim.icq.util.joe.HexUtil;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 
 public class Utils
 {
@@ -189,7 +197,7 @@ public class Utils
     sb.append("(array of unknown type \"" + cl + "\")");
     length = endPos + 1;
     }
-  if ((length) < 0) org.openmim.icq.util.joe.Lang.ASSERT_NON_NEGATIVE(length, "length");
+  if ((length) < 0) org.openmim.icq.utils.Lang.ASSERT_NON_NEGATIVE(length, "length");
   if (endPos != -1 && endPos < length)
   sb.append(", ...");
   sb.append("}");
@@ -310,11 +318,11 @@ public class Utils
   }
   public static void dumpStack()
   {
-  org.openmim.icq.util.joe.Logger.printException(new Throwable());
+  org.openmim.icq.utils.Logger.printException(new Throwable());
   }
   public static void dumpStack(PrintStream p)
   {
-  org.openmim.icq.util.joe.Logger.printException(new Throwable(), p);
+  org.openmim.icq.utils.Logger.printException(new Throwable(), p);
   }
   public static boolean equalsStrings(String strings1[], String strings2[])
   {

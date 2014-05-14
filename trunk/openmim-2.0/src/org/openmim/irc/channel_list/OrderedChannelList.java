@@ -4,9 +4,9 @@ package org.openmim.irc.channel_list;
 // Jad home page: http://www.geocities.com/SiliconValley/Bridge/8617/jad.html
 // Decompiler options: fieldsfirst splitstr
 // Source File Name:   OrderedChannelList.java
-import squirrel_util.Lang;
-import squirrel_util.Order;
-import squirrel_util.Ordered;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Order;
+import com.egplab.utils.Ordered;
 
 // Referenced classes of package org.openmim.irc.model:
 //      ChannelList, ChannelListItem

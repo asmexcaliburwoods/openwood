@@ -2,7 +2,10 @@ package org.openmim.transport_simpletcp;
 
 import java.util.*;
 import java.io.*;
-import org.openmim.icq.util.joe.*;
+
+import org.openmim.icq.utils.*;
+import org.openmim.stuff.AbstractConsumer;
+import org.openmim.stuff.Defines;
 import org.openmim.*;
 
 final class SocketRegistry

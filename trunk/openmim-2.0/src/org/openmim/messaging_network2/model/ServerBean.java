@@ -1,4 +1,4 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
 public abstract class ServerBean {
     private IMNetworkBean imNetwork;

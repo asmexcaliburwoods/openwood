@@ -7,7 +7,7 @@ public interface MessagingNetworkContactListItem
     The time of the last time when MessagingNetwork impl 
     has fired the listeners.statusChanged (...) event.
 
-    @see org.openmim.mn.MessagingNetworkListener
+    @see org.openmim.messaging_network.MessagingNetworkListener
   */
   public long getContactStatusLastChangeTimeMillis();
 

@@ -1,8 +1,8 @@
 package org.openmim.irc.driver.dcc;
 
-import squirrel_util.TimeoutExpiryQueue;
-import squirrel_util.Logger;
-import squirrel_util.Expirable;
+import com.egplab.utils.Expirable;
+import com.egplab.utils.Logger;
+import com.egplab.utils.TimeoutExpiryQueue;
 
 // Decompiled by Jad v1.5.6g. Copyright 1997-99 Pavel Kouznetsov.
 // Jad home page: http://www.geocities.com/SiliconValley/Bridge/8617/jad.html

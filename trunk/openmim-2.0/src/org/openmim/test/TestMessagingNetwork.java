@@ -2,15 +2,20 @@ package org.openmim.test;
 
 import java.util.*;
 import java.io.*;
+
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
 import org.apache.log4j.Logger;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserSearchResults;
 
 public class TestMessagingNetwork implements MessagingNetwork {
   java.util.List networkListeners = new ArrayList();
@@ -512,7 +517,7 @@ public class TestMessagingNetwork implements MessagingNetwork {
   {TODO(); return null;}
   /**
     If null is returned, then no users found.
-    @see org.openmim.UserSearchResults
+    @see org.openmim.stuff.UserSearchResults
   */
   public UserSearchResults searchUsers(
     String srcLoginId,

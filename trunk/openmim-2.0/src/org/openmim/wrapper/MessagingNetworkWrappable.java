@@ -1,6 +1,6 @@
 package org.openmim.wrapper;
 
-import org.openmim.mn.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetwork;
 import org.openmim.wrapper.MessagingNetworkSession;
 
 //

@@ -1,11 +1,14 @@
 package org.openmim.icq2k;
 
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkException;
-import org.openmim.icq.util.joe.*;
-import org.openmim.icq.util.joe.jsync.*;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.icq.utils.*;
+import org.openmim.icq.utils.jsync.*;
 
 public class SessionReconnecting
 extends Session
@@ -684,7 +687,7 @@ extends Session
   #
   # - REQPARAM_NETWORK_CONDITIONS_SWING__MAXIMUM_COUNT_OF_REGISTERED_RELOGINS
   #     maximum count of session relogin attempts that are registered by icq server.
-  #     Будем называть такие попытки релогина термином 'registered relogins'.
+  #     я┐╜удея┐╜ я┐╜я┐╜я┐╜ывая┐╜я┐╜ такя┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜тки реля┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜рмия┐╜я┐╜я┐╜ 'registered relogins'.
   # - REQPARAM_NETWORK_CONDITIONS_SWING__FORGET_TIMEOUT_FOR_REGISTERED_RELOGINS_MINUTES
   #     session will forget all & any registered relogins, which occured
   #     before (currentTime() - FORGET_TIMEOUT)
