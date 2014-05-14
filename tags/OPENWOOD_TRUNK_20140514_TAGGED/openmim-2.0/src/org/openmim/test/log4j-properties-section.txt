@@ -1,0 +1,8 @@
+# append these lines to your log4j.properties file.
+
+log4j.category.org.openmim.test=DEBUG,openmim
+log4j.appender.openmim=org.apache.log4j.FileAppender
+log4j.appender.openmim.File=/tmp/logs/z-openmim.log
+log4j.appender.openmim.Append=false
+log4j.appender.openmim.layout=org.apache.log4j.PatternLayout
+log4j.appender.openmim.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss.SSS}\t%p\t[%t]\t%m\t\t<category: %c>%n

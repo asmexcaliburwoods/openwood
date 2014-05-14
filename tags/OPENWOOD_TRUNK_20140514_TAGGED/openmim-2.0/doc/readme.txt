@@ -1,0 +1,1 @@
+Application for testing ICQ and MSN is org.openmim.test.TestApplet.

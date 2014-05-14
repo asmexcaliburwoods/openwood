@@ -1,0 +1,26 @@
+﻿
+<!-- 
+  Tests the MessagingNetworkStub:
+  MessagingNetworkStub should send no text/contacts messages after logout.
+
+  To produce best results, set 
+
+  REQPARAM_DELAY_BETWEEN_MESSAGE_RECEIVED_EVENTS_PER_SESSION_MILLIS_MIN = 500
+  REQPARAM_DELAY_BETWEEN_MESSAGE_RECEIVED_EVENTS_PER_SESSION_MILLIS_MAX = 500
+
+  REQPARAM_DELAY_BETWEEN_CONTACTS_RECEIVED_EVENTS_PER_SESSION_MILLIS_MIN = 500
+  REQPARAM_DELAY_BETWEEN_CONTACTS_RECEIVED_EVENTS_PER_SESSION_MILLIS_MAX = 500
+
+  in MessagingNetworkStub.properties.
+-->
+
+<mns>
+  <define-user nick="u" login-id="10000" password="p"/>
+  <launch-thread behavior-id="b" src-login-id="u"/>
+  <behavior id="b">
+	<login/>
+	<sleep seconds="10"/>
+	<logout/>
+	<sleep minutes="10"/>
+  </behavior>
+</mns>
