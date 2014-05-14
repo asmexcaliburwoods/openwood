@@ -1,11 +1,9 @@
-package openwood.chat.xmpp;
+package com.openwood.chat.xmpp;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
-import openwood.chat.impl.AbstractChatConnector;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,6 +19,8 @@ import org.jivesoftware.smack.filter.PacketTypeFilter;
 import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Presence;
+
+import com.openwood.chat.impl.AbstractChatConnector;
 
 public class XMPPChatConnector extends AbstractChatConnector {
 	private static Log LOG=LogFactory.getLog(XMPPChatConnector.class);

@@ -1,8 +1,9 @@
-package openwood.chat.impl;
+package com.openwood.chat.impl;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -18,30 +19,37 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import java.util.Map.Entry;
 
-import openwood.chat.ChatConnector;
-import openwood.chat.ChatConnectorFactory;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.openwood.chat.ChatConnector;
+import com.openwood.chat.ChatConnectorFactory;
 
 public class ChatConnectorLauncher {
 	private static final Log LOG=LogFactory.getLog(ChatConnectorLauncher.class);
 	private static Registry registry;
 	public static void main(String[] args){
 		try{
-			Properties p=new Properties();
-			FileInputStream fis=null;
-			try{
-				fis=new FileInputStream(args[0]);
-				p.load(new BufferedInputStream(fis,64*1024));
-				
-				startAll(p);
-			}finally{
-				if(fis!=null)try{fis.close();}catch(IOException e){LOG.error("",e);}
-			}
+			String startupPropertiesFileName=args[0];
+			Properties startupConfig = loadStartupConfiguration(startupPropertiesFileName);
+			startAll(startupConfig);
 		}catch(Throwable tr){
 			LOG.error("", tr);
 		}
+	}
+
+	private static Properties loadStartupConfiguration(
+			String startupPropertiesFileName) throws FileNotFoundException,
+			IOException {
+		Properties p=new Properties();
+		FileInputStream fis=null;
+		try{
+			fis=new FileInputStream(startupPropertiesFileName);
+			p.load(new BufferedInputStream(fis,64*1024));
+		}finally{
+			if(fis!=null)try{fis.close();}catch(IOException e){LOG.error("",e);}
+		}
+		return p;
 	}
 	private static int connectorsStarted=0;
 	private static void startAll(final Properties p) throws Exception {
