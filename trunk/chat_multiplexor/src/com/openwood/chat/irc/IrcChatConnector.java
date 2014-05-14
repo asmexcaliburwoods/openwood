@@ -1,4 +1,4 @@
-package openwood.chat.irc;
+package com.openwood.chat.irc;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -7,29 +7,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
-import openwood.chat.impl.AbstractChatConnector;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmim.kernel.Kernel;
-import org.openmim.kernel.KernelListener;
-import org.openmim.mn2.controller.IMNetwork;
-import org.openmim.mn2.model.ChannelContactBean;
-import org.openmim.mn2.model.ConfigurationBean;
-import org.openmim.mn2.model.GlobalIRCParameters;
-import org.openmim.mn2.model.GlobalParameters;
-import org.openmim.mn2.model.IMNetworkBean;
-import org.openmim.mn2.model.IRCNetworkBean;
-import org.openmim.mn2.model.IRCServerBean;
-import org.openmim.mn2.model.Query;
-import org.openmim.mn2.model.RoleToDisplayBean;
-import org.openmim.mn2.model.Room;
-import org.openmim.mn2.model.ServerBean;
-import org.openmim.mn2.model.StatusRoom;
+import org.openmim.messaging_network2.controller.IMNetwork;
+import org.openmim.messaging_network2.model.ChannelContactBean;
+import org.openmim.messaging_network2.model.ConfigurationBean;
+import org.openmim.messaging_network2.model.GlobalIRCParameters;
+import org.openmim.messaging_network2.model.GlobalParameters;
+import org.openmim.messaging_network2.model.IMNetworkBean;
+import org.openmim.messaging_network2.model.IRCNetworkBean;
+import org.openmim.messaging_network2.model.IRCServerBean;
+import org.openmim.messaging_network2.model.Query;
+import org.openmim.messaging_network2.model.RoleToDisplayBean;
+import org.openmim.messaging_network2.model.Room;
+import org.openmim.messaging_network2.model.ServerBean;
+import org.openmim.messaging_network2.model.StatusRoom;
+import org.openmim.messaging_network_central.MessagingNetworkCentral;
+import org.openmim.messaging_network_central.MessagingNetworkCentral_Listener;
+
+import com.openwood.chat.impl.AbstractChatConnector;
 
 public class IrcChatConnector extends AbstractChatConnector {
 	private final static Log LOG=LogFactory.getLog(IrcChatConnector.class);
-	private final class KL_Impl implements KernelListener {
+	private final class KL_Impl implements MessagingNetworkCentral_Listener {
 		@Override
 		public void onActionMessage(IMNetwork net, Room room,
 				String nickName, String text) {
@@ -60,7 +60,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 				String text) {
 			boolean isprivate=room instanceof Query;
 			LOG.debug("ONMESSAGE: net: "+net+" isprivate: "+isprivate+" room: ("+room+") from: "+nickFrom);
-			String botNick=kernel.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).getCurrentLoginId();
+			String botNick=messagingNetworkCentral.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).getCurrentLoginId();
 			if(!isprivate)if(!text.toLowerCase().startsWith(botNick.toLowerCase()))return;
 			text=(text.toLowerCase().startsWith(botNick.toLowerCase()))?text.substring(botNick.length()).trim():text;
 			if(text.startsWith(":")||text.startsWith(","))text=text.substring(1).trim();
@@ -103,9 +103,15 @@ public class IrcChatConnector extends AbstractChatConnector {
 		public void onWelcome(StatusRoom room, String newNick, String text) {
 			joinChannels(room.getIMNetwork());
 		}
+
+		@Override
+		public void onModeChangeForMe(String modeString) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
-	private Kernel kernel;
+	private MessagingNetworkCentral messagingNetworkCentral;
 	
 	public IrcChatConnector(String instanceId, Properties properties) throws Throwable {
 		super(instanceId,properties);
@@ -127,11 +133,11 @@ public class IrcChatConnector extends AbstractChatConnector {
 	}
 
 	public void login()throws Throwable{
-		kernel=Kernel.create(createCB());
+		messagingNetworkCentral=MessagingNetworkCentral.create(createCB());
 //		new Thread(new Runnable(){
 //			public void run() {
 //				try{
-					kernel.doAll(new KL_Impl());
+					messagingNetworkCentral.doAll(new KL_Impl());
 //				}catch(Throwable tr){
 //					LOG.error("irc",tr);
 //				}
@@ -182,7 +188,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 		leaf.setLoginId(ch);
 		leaf.setDisplayName(ch);
 		try {
-			kernel.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).joinRoom(leaf);
+			messagingNetworkCentral.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).joinRoom(leaf);
 		} catch (Throwable e) {
 			LOG.error("",e);
 			throw new RemoteException("joinRoom",e);
@@ -198,7 +204,7 @@ public class IrcChatConnector extends AbstractChatConnector {
 	public void sendMessage(String networkId, String roomId, String recipientId, String plaintext)
 			throws RemoteException {
 		try {
-			kernel.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).
+			messagingNetworkCentral.getCtx().getMetaNetwork().getIrc().getIMNetworks().get(0).
 				sendMessage((roomId==null?recipientId:roomId), ""+(roomId==null?"":recipientId+": ")+plaintext);
 		} catch (Throwable e) {
 			LOG.error("",e);

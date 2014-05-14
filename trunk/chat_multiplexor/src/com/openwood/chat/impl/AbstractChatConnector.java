@@ -1,4 +1,4 @@
-package openwood.chat.impl;
+package com.openwood.chat.impl;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -17,10 +17,10 @@ import java.util.Properties;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import openwood.chat.ChatConnector;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.openwood.chat.ChatConnector;
 
 public abstract class AbstractChatConnector implements ChatConnector {
 	private static final Log LOG=LogFactory.getLog(AbstractChatConnector.class);

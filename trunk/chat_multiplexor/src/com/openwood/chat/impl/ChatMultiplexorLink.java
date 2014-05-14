@@ -1,4 +1,4 @@
-package openwood.chat.impl;
+package com.openwood.chat.impl;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -17,11 +17,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
-import openwood.chat.ChatConnector;
-import openwood.chat.ChatConnector.Listener;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.openwood.chat.ChatConnector;
+import com.openwood.chat.ChatConnector.Listener;
 
 public class ChatMultiplexorLink {
 	private static final Log LOG=LogFactory.getLog(ChatMultiplexorLink.class);

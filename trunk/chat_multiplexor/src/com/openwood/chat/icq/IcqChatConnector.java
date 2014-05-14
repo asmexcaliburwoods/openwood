@@ -1,18 +1,18 @@
-package openwood.chat.icq;
+package com.openwood.chat.icq;
 
 import java.rmi.RemoteException;
 import java.util.Properties;
 
-import openwood.chat.impl.AbstractChatConnector;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmim.UserDetails;
 import org.openmim.icq2k.ICQ2KMessagingNetwork;
 import org.openmim.icq2k.ICQ2KMessagingNetworkReconnecting;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkException;
-import org.openmim.mn.MessagingNetworkListener;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.UserDetails;
+
+import com.openwood.chat.impl.AbstractChatConnector;
 
 public class IcqChatConnector extends AbstractChatConnector {
 	private static final Log LOG=LogFactory.getLog(IcqChatConnector.class);

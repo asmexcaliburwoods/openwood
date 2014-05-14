@@ -1,9 +1,9 @@
-package openwood.chat.icq;
+package com.openwood.chat.icq;
 
 import java.util.Properties;
 
-import openwood.chat.ChatConnector;
-import openwood.chat.ChatConnectorFactory;
+import com.openwood.chat.ChatConnector;
+import com.openwood.chat.ChatConnectorFactory;
 
 public class IcqChatConnectorFactory implements ChatConnectorFactory {
 
