@@ -1,6 +1,6 @@
 package org.openmim.icq2k;
 
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
 
 public interface PacketListener
 {

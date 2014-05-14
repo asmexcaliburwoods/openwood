@@ -3,8 +3,10 @@ package org.openmim.wrapper;
 import java.util.*;
 
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.icq.util.joe.*;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.icq.utils.*;
 import org.apache.log4j.Logger;
 
 
@@ -13,9 +15,9 @@ import org.apache.log4j.Logger;
 
   ,,,.messaging.wrapper.MessagingNetworkStatusFilter:
   //implements MessagingNetwork
-  если статус src X dst Y (X != Y) меняется чаще, чем раз в минуту,
-  то фильтровать прореживать статус нотификации до раза в минуту.
-  Это учитывает from-core statuses & from-icq-server statuses.
+  я┐╜сли я┐╜я┐╜я┐╜я┐╜я┐╜ src X dst Y (X != Y) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜, чем раз я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜,
+  я┐╜ филя┐╜я┐╜ровя┐╜я┐╜я┐╜ я┐╜я┐╜режя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜фикя┐╜ции я┐╜я┐╜ разя┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜.
+  я┐╜я┐╜ я┐╜я┐╜я┐╜ывая┐╜я┐╜ from-core statuses & from-icq-server statuses.
 */
 public class StatusFilterUtil
 {

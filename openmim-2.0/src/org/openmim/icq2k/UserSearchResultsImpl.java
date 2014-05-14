@@ -1,8 +1,10 @@
 package org.openmim.icq2k;
 
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+import org.openmim.stuff.UserSearchResults;
 
 public class UserSearchResultsImpl
 implements UserSearchResults

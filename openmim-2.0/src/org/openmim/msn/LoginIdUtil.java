@@ -2,9 +2,9 @@ package org.openmim.msn;
 
 import java.io.*;
 
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
 import org.openmim.icq.util.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 
 public class LoginIdUtil
 {

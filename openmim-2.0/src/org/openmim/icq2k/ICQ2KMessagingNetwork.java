@@ -1,14 +1,21 @@
 package org.openmim.icq2k;
 
+import org.openmim.stuff.AsyncOperation;
+import org.openmim.stuff.AsyncOperationRegistry;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.StatusUtilMim;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.transport_simpletcp.*;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
 import org.openmim.infrastructure.scheduler.Scheduler;
 import org.openmim.wrapper.*;
 import org.openmim.icq.util.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+
 import java.util.*;
 import java.net.*;
 

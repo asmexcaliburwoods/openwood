@@ -3,7 +3,8 @@ package org.openmim.msn;
 import java.io.*;
 
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
 
 public abstract class Transaction
 {

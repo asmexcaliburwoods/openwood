@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="lib/xerces.jar"/>
 	<classpathentry kind="lib" path="lib/jsync.zip"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/philippovlab_java"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

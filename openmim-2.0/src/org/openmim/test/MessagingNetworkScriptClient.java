@@ -3,11 +3,13 @@ package org.openmim.test;
 import java.util.*;
 
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkListener;
-import org.openmim.mn.MessagingNetworkAdapter;
-import org.openmim.mn.MessagingNetworkException;
-import org.openmim.icq.util.joe.*;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkAdapter;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkListener;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.UserDetails;
+import org.openmim.icq.utils.*;
 import org.w3c.dom.*;
 import org.apache.xerces.parsers.*;
 

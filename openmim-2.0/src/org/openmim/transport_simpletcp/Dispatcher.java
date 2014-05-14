@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.openmim.*;
 import org.openmim.infrastructure.taskmanager.ThreadPool;
+import org.openmim.stuff.Defines;
 
 final class Dispatcher extends Thread
 {

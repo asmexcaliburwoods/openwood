@@ -1,16 +1,20 @@
 package org.openmim.icq2k;
 
-import org.openmim.icq.util.joe.PipedInputStream;
-import org.openmim.icq.util.joe.PipedOutputStream;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.AbstractConsumer;
+import org.openmim.stuff.AsyncOperation;
+import org.openmim.stuff.Defines;
 import org.openmim.infrastructure.ObjectCache;
 import org.openmim.icq.util.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+import org.openmim.icq.utils.PipedInputStream;
+import org.openmim.icq.utils.PipedOutputStream;
 
 /**
   Represents a base class for both usual TCP/IP socket connections and
@@ -35,7 +39,7 @@ public abstract class Aim_conn_t
 
   private static ObjectCache buffers;
   private static final Object buffersLock = new Object();
-  private PipedInputStream pin;
+  protected PipedInputStream pin;
   private PipedOutputStream pout;
   private int flapChannel = -1;
   private int expectedFlapDataLength = -1;

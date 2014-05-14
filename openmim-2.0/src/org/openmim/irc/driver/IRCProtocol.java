@@ -6,8 +6,9 @@ package org.openmim.irc.driver;
 // Source File Name:   IRCProtocol.java
 
 import org.openmim.irc.driver.dcc.DCCResumeRegistry;
-import squirrel_util.Lang;
-import squirrel_util.Logger;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -227,7 +228,7 @@ public abstract class IRCProtocol {
             //}
             //catch (Exception ex)
             //{
-            //squirrel_util.Logger.printException(ex);
+            //com.egp.utils.Logger.printException(ex);
             //}
         }
     }

@@ -8,9 +8,11 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+
 import org.openmim.irc.driver.IRCClientProtocolScanner;
-import squirrel_util.Lang;
-import squirrel_util.Logger;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
 
 public class DccOutputStream extends OutputStream
 {

@@ -1,6 +1,6 @@
 package org.openmim.irc.driver;
 
-import org.openmim.mn2.model.User;
+import org.openmim.messaging_network2.model.User;
 
 //
 public class User_
@@ -18,7 +18,7 @@ public User_(String s, boolean flag, boolean flag1)
 }
 /**
    *Is null until set by setClient(User_);
-   *@see #setClient(org.openmim.mn2.model.User)
+   *@see #setClient(org.openmim.messaging_network2.model.User)
    */
 public User getUser()
 {
@@ -56,7 +56,7 @@ public boolean isVoice()
   return voice;
 }
 /**
-   * Insert the method's description here. Creation date: (16 окт 2000 18:51:04)
+   * Insert the method's description here. Creation date: (16 пїЅпїЅпїЅ 2000 18:51:04)
    * @param newUser org.openmim.irc.mvc_impl.model.User_
    */
 public void setClient(User newUser)

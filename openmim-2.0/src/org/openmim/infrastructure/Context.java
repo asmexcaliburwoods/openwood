@@ -1,15 +1,15 @@
 package org.openmim.infrastructure;
 
-import org.openmim.metanetwork.MetaNetwork;
-import org.openmim.mn2.model.StatusRoomListenerExternal;
-import org.openmim.kernel.KernelListener;
-import org.openmim.mn2.model.ConfigurationBean;
+import org.openmim.messaging_network2.model.ConfigurationBean;
+import org.openmim.messaging_network2.model.StatusRoomListenerExternal;
+import org.openmim.messaging_network3.MetaNetwork;
+import org.openmim.messaging_network_central.MessagingNetworkCentral_Listener;
 
 public class Context {
     private MetaNetwork metaNetwork;
     private ConfigurationBean configurationBean;
     private StatusRoomListenerExternal statusRoomListenerExternal;
-    private KernelListener kernelListener;
+    private MessagingNetworkCentral_Listener messagingNetworkCentral_Listener;
 
     public Context(MetaNetwork metaNetwork, ConfigurationBean configurationBean, StatusRoomListenerExternal statusRoomListenerExternal) {
         this.metaNetwork = metaNetwork;
@@ -29,12 +29,12 @@ public class Context {
         return statusRoomListenerExternal;
     }
 
-    public void setKernelListener(KernelListener kernelListener) {
-        this.kernelListener = kernelListener;
+    public void setKernelListener(MessagingNetworkCentral_Listener messagingNetworkCentral_Listener) {
+        this.messagingNetworkCentral_Listener = messagingNetworkCentral_Listener;
     }
 
-    public KernelListener getKernelListener() {
-        return kernelListener;
+    public MessagingNetworkCentral_Listener getKernelListener() {
+        return messagingNetworkCentral_Listener;
     }
 }
 

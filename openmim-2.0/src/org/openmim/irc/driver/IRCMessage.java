@@ -1,10 +1,11 @@
 package org.openmim.irc.driver;
 
-import org.openmim.mn2.controller.IRCController;
-import org.openmim.mn2.model.IRCUser;
-import squirrel_util.ExpectException;
-import squirrel_util.Lang;
-import squirrel_util.StringUtil;
+import org.openmim.messaging_network2.controller.IRCController;
+import org.openmim.messaging_network2.model.IRCUser;
+
+import com.egplab.utils.ExpectException;
+import com.egplab.utils.Lang;
+import com.egplab.utils.StringUtil;
 
 import java.util.Vector;
 
@@ -90,7 +91,7 @@ public class IRCMessage {
      * (and update) User_'s association links if they exist.
      */
     private IRCUser getModifyCreateClient() throws ExpectException {
-        //squirrel_util.Lang.ASSERT(this.user == null, "this.user must be null here.");
+        //com.egp.utils.Lang.ASSERT(this.user == null, "this.user must be null here.");
         parsePrefix();
         if (nickNameOrServerName == null)
             return null;
@@ -125,7 +126,7 @@ public class IRCMessage {
      * - <code>(null)</code><br>
      */
     private void parsePrefix() throws ExpectException {
-        //squirrel_util.Lang.ASSERT_NOT_NULL(prefix, "prefix");
+        //com.egp.utils.Lang.ASSERT_NOT_NULL(prefix, "prefix");
         if (prefix == null)
             return;
         int exclamationPos = prefix.indexOf('!');
@@ -143,6 +144,6 @@ public class IRCMessage {
             hostName = prefix.substring(frogPos + 1);
             Lang.EXPECT_NOT_NULL_NOR_TRIMMED_EMPTY(this.hostName, "hostname in (malformed) server response");
         }
-        //squirrel_util.Lang.EXPECT_NOT_NULL_NOR_TRIMMED_EMPTY(this.nickNameOrServerName, "nickName/servername in (malformed) server response");
+        //com.egp.utils.Lang.EXPECT_NOT_NULL_NOR_TRIMMED_EMPTY(this.nickNameOrServerName, "nickName/servername in (malformed) server response");
     }
 }

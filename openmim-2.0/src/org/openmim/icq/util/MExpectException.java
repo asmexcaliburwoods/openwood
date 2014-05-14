@@ -1,6 +1,6 @@
 package org.openmim.icq.util;
 
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
 
 public class MExpectException extends MessagingNetworkException
 {

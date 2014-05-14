@@ -1,6 +1,6 @@
 package org.openmim.msn;
 
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
 
 /**
   Manages sessions and threads that belong to each given

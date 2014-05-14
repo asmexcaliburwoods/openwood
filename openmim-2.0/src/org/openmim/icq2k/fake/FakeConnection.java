@@ -1,14 +1,16 @@
 package org.openmim.icq2k.fake;
 
-import org.openmim.icq.util.joe.PipedOutputStream;
-import org.openmim.icq.util.joe.PipedInputStream;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
 import org.openmim.*;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
 import org.openmim.icq2k.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
+import org.openmim.icq.utils.PipedInputStream;
+import org.openmim.icq.utils.PipedOutputStream;
 
 public final class FakeConnection extends Aim_conn_t
 {

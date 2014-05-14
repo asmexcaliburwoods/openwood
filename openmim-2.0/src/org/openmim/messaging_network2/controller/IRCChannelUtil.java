@@ -1,4 +1,4 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
 public class IRCChannelUtil {
     public static boolean isChannelName(String channelName){

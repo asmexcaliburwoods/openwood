@@ -1,11 +1,11 @@
 package org.openmim.irc.driver.dcc;
 
-import squirrel_util.Lang;
-import squirrel_util.Logger;
-import squirrel_util.TimeoutExpiryQueue;
-
 import java.io.*;
 import java.net.InetAddress;
+
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
+import com.egplab.utils.TimeoutExpiryQueue;
 
 //
 public abstract class DccReceiver extends DCCRequest implements FileReceiveListener

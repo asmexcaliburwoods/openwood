@@ -5,7 +5,8 @@ import java.net.*;
 
 import org.openmim.*;
 import org.openmim.proxy_socks5.Socks5Util;
-import org.openmim.icq.util.joe.*;
+import org.openmim.stuff.Defines;
+import org.openmim.icq.utils.*;
 
 /**
   A [socks5 tcp connection/direct tcp connection] transport auto chooser.
@@ -13,9 +14,9 @@ import org.openmim.icq.util.joe.*;
   <pre>
     - "5" force icq plugin to use socks5 server
     - "d" force icq plugin to use direct connection to icq server
-    - "5d" make icq plugin first try socks5, ¥á«¨ ®¡«®¬, â® ¢àã¡¨âì auto-choose socks5 or direct_conn
-    - "d5" make icq plugin first try direct connection to icq server, ¥á«¨ ®¡«®¬,
-      â® ¢àã¡¨âì auto-choose socks5 or direct_conn
+    - "5d" make icq plugin first try socks5, ï¿½á«¨ ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ ï¿½ï¿½ã¡¨ï¿½ï¿½ auto-choose socks5 or direct_conn
+    - "d5" make icq plugin first try direct connection to icq server, ï¿½á«¨ ï¿½ï¿½ï¿½ï¿½ï¿½,
+      ï¿½ ï¿½ï¿½ã¡¨ï¿½ï¿½ auto-choose socks5 or direct_conn
   </pre>
   <p>
   "5d" is the default specified in a static ICQ2Kxxx.properties resource,
@@ -147,7 +148,8 @@ class TransportChooser
     return sok;
   }
 
-  private static Socket connect(char transport, InetAddress host, int port, int socketTimeoutMillis)
+  @SuppressWarnings("resource")
+private static Socket connect(char transport, InetAddress host, int port, int socketTimeoutMillis)
   throws IOException
   {
     Socket sok;

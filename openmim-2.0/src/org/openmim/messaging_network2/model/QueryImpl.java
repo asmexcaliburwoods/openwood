@@ -1,8 +1,8 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
-import org.openmim.mn2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IMNetwork;
 
-import squirrel_util.Lang;
+import com.egplab.utils.Lang;
 
 //
 public class QueryImpl extends RoomImpl implements Query {

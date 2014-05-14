@@ -3,6 +3,7 @@ package org.openmim.transport_simpletcp;
 import java.io.*;
 
 import org.openmim.*;
+import org.openmim.stuff.AbstractConsumer;
 
 public final class SimpleTcp
 {

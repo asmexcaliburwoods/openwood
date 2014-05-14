@@ -3,8 +3,10 @@ package org.openmim.transport_simpletcp;
 import java.io.*;
 
 import org.openmim.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 import org.openmim.infrastructure.taskmanager.*;
+import org.openmim.stuff.AbstractConsumer;
+import org.openmim.stuff.Defines;
 
 final class SocketWrapper extends TaskImpl
 {

@@ -15,9 +15,9 @@ import java.util.StringTokenizer;
 import org.openmim.irc.driver.IRCClient;
 import org.openmim.irc.driver.IRCClientProtocolScanner;
 
-import squirrel_util.Lang;
-import squirrel_util.Logger;
-import squirrel_util.TimeoutExpiryQueue;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
+import com.egplab.utils.TimeoutExpiryQueue;
 
 // Referenced classes of package org.openmim.irc.dcc:
 //      DCCRequest, DccOutputStream

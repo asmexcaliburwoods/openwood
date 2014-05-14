@@ -7,8 +7,9 @@ package org.openmim.irc.driver;
 import java.awt.Color;
 import java.util.Enumeration;
 import java.util.StringTokenizer;
-import squirrel_util.AssertException;
-import squirrel_util.Lang;
+
+import com.egplab.utils.AssertException;
+import com.egplab.utils.Lang;
 
 // Referenced classes of package org.openmim.irc:
 //      IRCRtfDissectEnum, IRCProtocol

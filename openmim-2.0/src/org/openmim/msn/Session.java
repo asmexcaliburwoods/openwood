@@ -3,11 +3,15 @@ package org.openmim.msn;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import org.openmim.icq.util.joe.*;
+
+import org.openmim.icq.utils.*;
 import org.openmim.icq.util.*;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.UserDetailsImpl;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.wrapper.*;
 import org.openmim.infrastructure.taskmanager.Task;
 

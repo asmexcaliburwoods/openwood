@@ -1,17 +1,17 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
-import org.openmim.exception_handler.ExceptionUtil;
 import org.openmim.infrastructure.Context;
 import org.openmim.irc.driver.*;
 import org.openmim.irc.regexp.IRCMask;
 import org.openmim.irc.regexp_util.IRCMaskUtil;
-import org.openmim.mn2.MessagingNetwork2;
-import org.openmim.mn2.model.*;
+import org.openmim.messaging_network2.MessagingNetwork2;
+import org.openmim.messaging_network2.model.*;
 
-import squirrel_util.ExpectException;
-import squirrel_util.Lang;
-import squirrel_util.Logger;
-import squirrel_util.StringUtil;
+import com.egplab.exception_handling.ExceptionUtil;
+import com.egplab.utils.ExpectException;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
+import com.egplab.utils.StringUtil;
 
 import java.awt.*;
 import java.io.IOException;

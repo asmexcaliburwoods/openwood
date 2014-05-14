@@ -8,12 +8,12 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import org.openmim.mn2.controller.IMNetwork;
-import org.openmim.mn2.controller.IRCController;
-import org.openmim.mn2.controller.MN2Factory;
+import org.openmim.messaging_network2.controller.IMNetwork;
+import org.openmim.messaging_network2.controller.IRCController;
+import org.openmim.messaging_network2.controller.MN2Factory;
 
-import squirrel_util.Lang;
-import squirrel_util.Logger;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
 
 //
 public class IRCClient extends IRCProtocol {

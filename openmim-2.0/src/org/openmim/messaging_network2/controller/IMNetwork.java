@@ -1,12 +1,12 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
-import org.openmim.mn2.MessagingNetwork2;
-import org.openmim.mn2.model.AbstractContactBean;
-import org.openmim.mn2.model.ConcreteContactBean;
-import org.openmim.mn2.model.ContactListLeaf;
-import org.openmim.mn2.model.IMNetworkBean;
-import org.openmim.mn2.model.Server;
-import org.openmim.mn2.model.StatusRoom;
+import org.openmim.messaging_network2.MessagingNetwork2;
+import org.openmim.messaging_network2.model.AbstractContactBean;
+import org.openmim.messaging_network2.model.ConcreteContactBean;
+import org.openmim.messaging_network2.model.ContactListLeaf;
+import org.openmim.messaging_network2.model.IMNetworkBean;
+import org.openmim.messaging_network2.model.Server;
+import org.openmim.messaging_network2.model.StatusRoom;
 
 import java.util.List;
 import java.io.IOException;

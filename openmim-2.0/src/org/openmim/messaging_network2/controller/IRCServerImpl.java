@@ -1,9 +1,6 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
-import org.openmim.mn2.model.ServerBean;
-import org.openmim.mn2.model.IRCServerBean;
-import org.openmim.mn2.model.IMNetworkBean;
-import org.openmim.mn2.model.*;
+import org.openmim.messaging_network2.model.*;
 
 import java.util.List;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package org.openmim.mn2.model;
+package org.openmim.messaging_network2.model;
 
 public class ChannelContactBean extends AbstractContactBean{
     public boolean isChannel() {

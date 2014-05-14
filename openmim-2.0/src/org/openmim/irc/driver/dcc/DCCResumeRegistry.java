@@ -1,8 +1,15 @@
 package org.openmim.irc.driver.dcc;
 
-import squirrel_util.*;
-
 import java.util.*;
+
+import com.egp.utils.*;
+import com.egplab.utils.ExpectException;
+import com.egplab.utils.ExpiryEvent;
+import com.egplab.utils.ExpiryListener;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
+import com.egplab.utils.TimeoutExpiryQueue;
+import com.egplab.utils.TimeoutExpiryQueueImpl;
 
 /**
  * Insert the type's description here. Creation date: (04.10.00 7:09:56)
@@ -51,7 +58,7 @@ public DccSender getDccSender(int port)
 /**
  * Insert the method's description here.
  * Creation date: (03.02.01 23:57:33)
- * @return squirrel_util.util.TimeoutExpiryList
+ * @return com.egp.utils.util.TimeoutExpiryList
  */
 public final TimeoutExpiryQueue getTimeoutExpiryQueue()
 {

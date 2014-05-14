@@ -1,6 +1,7 @@
 package org.openmim.msn;
 
 import org.openmim.*;
+import org.openmim.stuff.TransportChooser;
 
 /**
   Contains miscelanneous objects for the plugin instance context.
@@ -16,7 +17,7 @@ public final class PluginContext
 
   public PluginContext(MSNMessagingNetwork plugin)
   {
-    if ((plugin) == null) org.openmim.icq.util.joe.Lang.ASSERT_NOT_NULL(plugin, "plugin");
+    if ((plugin) == null) org.openmim.icq.utils.Lang.ASSERT_NOT_NULL(plugin, "plugin");
     this.plugin = plugin;
   }
 

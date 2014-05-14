@@ -1,10 +1,10 @@
 package org.openmim.irc.regexp;
 
-import squirrel_util.Lang;
+import com.egplab.utils.Lang;
 
 /**
  * Insert the type's description here.
- * Creation date: (16 окт 2000 16:04:21)
+ * Creation date: (16 пїЅпїЅпїЅ 2000 16:04:21)
  * @author:
  */
 public class IRCMask

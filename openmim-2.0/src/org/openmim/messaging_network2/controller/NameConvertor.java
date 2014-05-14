@@ -1,4 +1,4 @@
-package org.openmim.mn2.controller;
+package org.openmim.messaging_network2.controller;
 
 public interface NameConvertor {
     String toCanonicalIRCNick(String nick);

@@ -12,7 +12,7 @@ import java.net.Socket;
 
 import org.openmim.irc.driver.IRCClientProtocolScanner;
 
-import squirrel_util.Lang;
+import com.egplab.utils.Lang;
 public class DccInputStream extends InputStream
 {
   private Socket sok;

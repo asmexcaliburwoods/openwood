@@ -2,9 +2,16 @@ package org.openmim.irc.driver;
 
 import org.openmim.irc.driver.dcc.DCCResumeRegistry;
 import org.openmim.irc.driver.dcc.DccReceiver;
-import org.openmim.mn2.controller.IRCController;
-import org.openmim.mn2.model.*;
-import squirrel_util.*;
+import org.openmim.messaging_network2.controller.IRCController;
+import org.openmim.messaging_network2.model.*;
+
+import com.egp.utils.*;
+import com.egplab.utils.ExpectException;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
+import com.egplab.utils.ReversedStringTokenizer;
+import com.egplab.utils.StringUtil;
+import com.egplab.utils.Util;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -76,7 +83,7 @@ public class IRCClientProtocolParser extends IRCConstant {
                 //":127.0.0.1 303 jj_mirc_foo :"
                 //":127.0.0.1 303 jj_mirc_foo :jj_mirc_foo "
                 //":127.0.0.1 303 jj_mirc_foo :jjj_mirc_foo jj_mirc_foo "
-                String[] nicksOnline = Acme.Utils.splitStr(msg.getTrailing().trim(), ' ');
+                String[] nicksOnline = org.acme.utils.Utils.splitStr(msg.getTrailing().trim(), ' ');
                 Lang.ASSERT_NOT_NULL(nicksOnline, "nicksOnline");
                 il.handleIsonReply(/*server*/ msg.getPrefix(), nicksOnline);
                 return;

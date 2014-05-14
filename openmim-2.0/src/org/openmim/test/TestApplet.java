@@ -3,11 +3,15 @@ package org.openmim.test;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-import org.openmim.icq.util.joe.*;
+
+import org.openmim.icq.utils.*;
 import org.openmim.*;
-import org.openmim.mn.MessagingNetwork;
-import org.openmim.mn.MessagingNetworkAdapter;
-import org.openmim.mn.MessagingNetworkException;
+import org.openmim.messaging_network.MessagingNetwork;
+import org.openmim.messaging_network.MessagingNetworkAdapter;
+import org.openmim.messaging_network.MessagingNetworkException;
+import org.openmim.stuff.Defines;
+import org.openmim.stuff.UserDetails;
+import org.openmim.stuff.UserSearchResults;
 import org.openmim.infrastructure.statistics.Statistics;
 
 /**
@@ -183,7 +187,7 @@ public class TestApplet extends Panel implements Runnable
                   }
                   else
                   {
-                    org.openmim.icq.util.joe.Lang.ASSERT_FALSE("invalid clientStatus.getSelectedItem()");
+                    org.openmim.icq.utils.Lang.ASSERT_FALSE("invalid clientStatus.getSelectedItem()");
                   }
             }
             catch (Throwable tr)
@@ -710,7 +714,7 @@ public class TestApplet extends Panel implements Runnable
   {
     synchronized (eventLogLock)
     {
-      eventLog.append("[" + org.openmim.icq.util.joe.Logger.formatCurrentDate() + "]\t" + s);
+      eventLog.append("[" + org.openmim.icq.utils.Logger.formatCurrentDate() + "]\t" + s);
       eventLog.append("\n");
     }
   }
@@ -897,7 +901,7 @@ public static void main(java.lang.String[] args)
           printUserInfo(userDetails);
         }
 
-        /** @see org.openmim.mn.MessagingNetwork#startLogin(String, String, String[], int) */
+        /** @see org.openmim.messaging_network.MessagingNetwork#startLogin(String, String, String[], int) */
         public void setStatusFailed(byte networkId, long operationId, String originalSrcLoginId,
           MessagingNetworkException ex)
           {

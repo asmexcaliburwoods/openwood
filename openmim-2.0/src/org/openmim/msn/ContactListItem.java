@@ -1,8 +1,9 @@
 package org.openmim.msn;
 
 import org.openmim.*;
+import org.openmim.stuff.Defines;
 import org.openmim.wrapper.*;
-import org.openmim.icq.util.joe.*;
+import org.openmim.icq.utils.*;
 
 public class ContactListItem
 implements MessagingNetworkContactListItem
@@ -67,7 +68,7 @@ implements MessagingNetworkContactListItem
     The time of the last time when MessagingNetwork impl
     has fired the listeners.statusChanged(...) event.
 
-    @see org.openmim.mn.MessagingNetworkListener
+    @see org.openmim.messaging_network.MessagingNetworkListener
   */
   public long getContactStatusLastChangeTimeMillis()
   { return contactStatusLastChangeTimeMillis; }

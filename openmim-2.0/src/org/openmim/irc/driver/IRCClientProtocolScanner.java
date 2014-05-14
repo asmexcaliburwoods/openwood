@@ -1,9 +1,10 @@
 package org.openmim.irc.driver;
 
-import org.openmim.mn2.controller.IRCController;
-import squirrel_util.ExpectException;
-import squirrel_util.Lang;
-import squirrel_util.Logger;
+import org.openmim.messaging_network2.controller.IRCController;
+
+import com.egplab.utils.ExpectException;
+import com.egplab.utils.Lang;
+import com.egplab.utils.Logger;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
