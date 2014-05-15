@@ -1,8 +1,7 @@
 package org.openmim.irc.driver.dcc;
 
-import java.util.*;
+import java.util.Hashtable;
 
-import com.egp.utils.*;
 import com.egplab.utils.ExpectException;
 import com.egplab.utils.ExpiryEvent;
 import com.egplab.utils.ExpiryListener;
