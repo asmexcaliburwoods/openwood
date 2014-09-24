@@ -5,6 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/smack_3_0_4"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/chat_tranoo_im_2.5"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/tranoo_talk_multi_im"/>
 	<classpathentry kind="output" path="compiled"/>
 </classpath>
