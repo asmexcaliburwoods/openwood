@@ -20,25 +20,33 @@
 
 package org.jivesoftware.smack;
 
-import org.jivesoftware.smack.debugger.SmackDebugger;
-import org.jivesoftware.smack.filter.PacketFilter;
-import org.jivesoftware.smack.packet.Packet;
-import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smack.packet.XMPPError;
-import org.jivesoftware.smack.util.StringUtils;
-
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+
+import org.jivesoftware.smack.debugger.SmackDebugger;
+import org.jivesoftware.smack.filter.PacketFilter;
+import org.jivesoftware.smack.packet.Packet;
+import org.jivesoftware.smack.packet.Presence;
+import org.jivesoftware.smack.packet.XMPPError;
+import org.jivesoftware.smack.util.StringUtils;
 
 /**
  * Creates a connection to a XMPP server. A simple use of this API might

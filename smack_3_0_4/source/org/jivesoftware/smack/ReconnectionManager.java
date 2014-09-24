@@ -2,9 +2,6 @@ package org.jivesoftware.smack;
 
 import org.jivesoftware.smack.packet.StreamError;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Handles the automatic reconnection process. Every time a connection is dropped without
  * the application explicitly closing it, the manager automatically tries to reconnect to
@@ -182,7 +179,7 @@ public class ReconnectionManager implements ConnectionListener {
      * @param exception the exception that occured.
      */
     protected void notifyReconnectionFailed(Exception exception) {
-        List<ConnectionListener> listenersCopy;
+        //List<ConnectionListener> listenersCopy;
         if (isReconnectionAllowed()) {
             for (ConnectionListener listener : connection.packetReader.connectionListeners) {
                 listener.reconnectionFailed(exception);

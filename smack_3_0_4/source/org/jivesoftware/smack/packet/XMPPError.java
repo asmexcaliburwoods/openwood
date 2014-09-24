@@ -427,7 +427,8 @@ public class XMPPError {
          *
          * @return the error condition.
          */
-        protected Condition getCondition() {
+        @SuppressWarnings("unused")
+		protected Condition getCondition() {
             return condition;
         }
 

@@ -20,17 +20,25 @@
 
 package org.jivesoftware.smack;
 
-import javax.net.ssl.X509TrustManager;
-import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.IOException;
-import java.security.*;
+import java.io.InputStream;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.Principal;
+import java.security.PublicKey;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.net.ssl.X509TrustManager;
 
 /**
  * Trust manager that checks all certificates presented by the server. This class
