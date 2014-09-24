@@ -42,7 +42,11 @@ import java.io.PrintWriter;
  */
 public class XMPPException extends Exception {
 
-    private StreamError streamError = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6881651633890968625L;
+	private StreamError streamError = null;
     private XMPPError error = null;
     private Throwable wrappedThrowable = null;
 
