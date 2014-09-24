@@ -1,2 +1,2 @@
-replace tranoo mim 2.5 with openmim-2.0 and fix. best wishes.
+replace tranoo im 2.5 with openmim-2.0 and fix. best wishes.
 this is currently unsupported project, but it might be re-animated in the future...
