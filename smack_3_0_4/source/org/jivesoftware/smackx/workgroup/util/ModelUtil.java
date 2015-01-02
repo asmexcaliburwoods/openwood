@@ -235,8 +235,7 @@ public final class ModelUtil {
         final long MS_IN_AN_HOUR = 1000 * 60 * 60;
         final long MS_IN_A_MINUTE = 1000 * 60;
         final long MS_IN_A_SECOND = 1000;
-        Date currentTime = new Date();
-        long numDays = diff / MS_IN_A_DAY;
+        new Date();
         diff = diff % MS_IN_A_DAY;
         long numHours = diff / MS_IN_AN_HOUR;
         diff = diff % MS_IN_AN_HOUR;
@@ -244,7 +243,8 @@ public final class ModelUtil {
         diff = diff % MS_IN_A_MINUTE;
         long numSeconds = diff / MS_IN_A_SECOND;
         diff = diff % MS_IN_A_SECOND;
-        long numMilliseconds = diff;
+        @SuppressWarnings("unused")
+		long numMilliseconds = diff;
 
         StringBuilder buf = new StringBuilder();
         if (numHours > 0) {

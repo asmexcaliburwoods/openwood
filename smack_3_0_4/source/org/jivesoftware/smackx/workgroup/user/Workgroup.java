@@ -55,7 +55,8 @@ public class Workgroup {
     private boolean inQueue;
     private List invitationListeners;
     private List queueListeners;
-    private List siteInviteListeners;
+    @SuppressWarnings("unused")
+	private List siteInviteListeners;
 
     private int queuePosition = -1;
     private int queueRemainingTime = -1;
