@@ -533,8 +533,6 @@ public class Socks5TransferNegotiator extends StreamNegotiator {
 
     private static class SelectedHostInfo {
 
-        protected XMPPException exception;
-
         protected StreamHost selectedHost;
 
         protected Socket establishedSocket;

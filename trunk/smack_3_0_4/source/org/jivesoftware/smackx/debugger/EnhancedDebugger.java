@@ -253,7 +253,12 @@ public class EnhancedDebugger implements SmackDebugger {
                 new DefaultTableModel(
                         new Object[]{"Hide", "Timestamp", "", "", "Message", "Id", "Type", "To", "From"},
                         0) {
-                    public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    /**
+							 * 
+							 */
+							private static final long serialVersionUID = 8136121224474217264L;
+
+					public boolean isCellEditable(int rowIndex, int mColIndex) {
                         return false;
                     }
 
@@ -645,7 +650,12 @@ public class EnhancedDebugger implements SmackDebugger {
                 new DefaultTableModel(new Object[][]{{"IQ", 0, 0}, {"Message", 0, 0},
                         {"Presence", 0, 0}, {"Other", 0, 0}, {"Total", 0, 0}},
                         new Object[]{"Type", "Received", "Sent"}) {
-                    public boolean isCellEditable(int rowIndex, int mColIndex) {
+                    /**
+							 * 
+							 */
+							private static final long serialVersionUID = -6793886085109589269L;
+
+					public boolean isCellEditable(int rowIndex, int mColIndex) {
                         return false;
                     }
                 };

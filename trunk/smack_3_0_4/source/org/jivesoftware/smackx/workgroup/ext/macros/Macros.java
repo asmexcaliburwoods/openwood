@@ -21,7 +21,6 @@ package org.jivesoftware.smackx.workgroup.ext.macros;
 
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.provider.IQProvider;
-import org.jivesoftware.smack.util.StringUtils;
 import org.xmlpull.v1.XmlPullParser;
 
 /**
@@ -34,10 +33,7 @@ public class Macros extends IQ {
     private boolean personal;
     private MacroGroup personalMacroGroup;
 
-    private static ClassLoader cl;
-
     public static void setClassLoader(ClassLoader cloader) {
-        cl = cloader;
     }
 
 
@@ -119,7 +115,8 @@ public class Macros extends IQ {
                 int eventType = parser.next();
                 if (eventType == XmlPullParser.START_TAG) {
                     if (parser.getName().equals("model")) {
-                        String macros = parser.nextText();
+                        @SuppressWarnings("unused")
+						String macros = parser.nextText();
                         // TODO: REMOVE XSTREAM
 //                        XStream xstream = new XStream();
 //                        if(cl != null){

@@ -458,7 +458,8 @@ public class Cache<K, V> implements Map<K, V> {
         /**
          * A count of the number of times the object has been read from cache.
          */
-        public int readCount = 0;
+        @SuppressWarnings("unused")
+		public int readCount = 0;
 
         /**
          * Creates a new cache object wrapper.
@@ -513,7 +514,8 @@ public class Cache<K, V> implements Map<K, V> {
          *
          * @return the first element of the list.
          */
-        public LinkedListNode getFirst() {
+        @SuppressWarnings("unused")
+		public LinkedListNode getFirst() {
             LinkedListNode node = head.next;
             if (node == head) {
                 return null;
@@ -569,7 +571,8 @@ public class Cache<K, V> implements Map<K, V> {
          * @param object the object to add to the end of the list.
          * @return the node created to wrap the object.
          */
-        public LinkedListNode addLast(Object object) {
+        @SuppressWarnings("unused")
+		public LinkedListNode addLast(Object object) {
             LinkedListNode node = new LinkedListNode(object, head, head.previous);
             node.previous.next = node;
             node.next.previous = node;
